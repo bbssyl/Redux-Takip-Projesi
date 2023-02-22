@@ -14,6 +14,7 @@ import EmployeeModal from "./EmployeeModal";
 
 const Employees = () => {
   const employees = useSelector((state) => state.employee.employees);
+  const employeeDetail = useSelector((state) => state.employee.employeeDetail);
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
   // const avarageOfRating = (id) => {
@@ -45,6 +46,12 @@ const Employees = () => {
   const navigate = useNavigate();
   return (
     <div>
+      <Modal isOpen={modal}>
+        <EmployeeModal
+          data={employeeDetail}
+          handleCloseModal={handleCloseModal}
+        />
+      </Modal>
       <div className="border-bottom p-3">
         <h4 className="text-center">Personel Listesi</h4>
         <div className="d-flex justify-content-end">
@@ -78,12 +85,6 @@ const Employees = () => {
                 employees.map((employee) => {
                   return (
                     <>
-                      <Modal isOpen={modal}>
-                        <EmployeeModal
-                          data={employee}
-                          handleCloseModal={handleCloseModal}
-                        />
-                      </Modal>
                       <tr key={employee.id}>
                         <td>{employee.employeeId}</td>
                         <td>

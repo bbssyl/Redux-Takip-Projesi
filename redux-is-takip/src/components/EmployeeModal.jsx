@@ -2,7 +2,7 @@ import React from "react";
 import { Button, ModalHeader, ModalBody } from "reactstrap";
 import { Form, Field, ErrorMessage, Formik } from "formik";
 import { useDispatch } from "react-redux";
-import { updateEmployee } from "../slices/employeesSlice";
+import { resetSelectedData, updateEmployee } from "../slices/employeesSlice";
 
 const EmployeeModal = ({ data, handleCloseModal }) => {
   const dispatch = useDispatch();
@@ -14,6 +14,7 @@ const EmployeeModal = ({ data, handleCloseModal }) => {
           initialValues={data}
           onSubmit={(values, { setSubmitting }) => {
             dispatch(updateEmployee(values));
+            dispatch(resetSelectedData());
             setSubmitting(false);
           }}
         >
@@ -44,10 +45,11 @@ const EmployeeModal = ({ data, handleCloseModal }) => {
                   <Field
                     className="form-control"
                     name="employeeGender"
-                    value={values.employeeGender}
+                    value={values.employeeGender === "e" ? "Erkek" : "Kadın"}
                     onChange={(event) =>
                       setFieldValue("employeeGender", event.target.value)
                     }
+                    disabled
                   />
                 </div>
                 <div className="mb-3">

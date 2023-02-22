@@ -22,6 +22,34 @@
       "employeeAddress": "Şırnak",
       "employeeStatus": "Front End Developer",
       "employeeRating": []
+    },
+    {
+      "id": "73a6d02f-b20d-4a0d-83e8-a60e7f2c64c8",
+      "employeeId": 1,
+      "employeeFirstName": "Barış",
+      "employeeLastName": "Benli",
+      "employeeGender": "e",
+      "employeeAge": 25,
+      "employeePhone": "5",
+      "employeeEmail": "e@mail.com",
+      "employeePassword": "",
+      "employeeAddress": "Şırnak",
+      "employeeStatus": "Front End Developer",
+      "employeeRating": []
+    },
+    {
+      "id": "50d38082-a258-4045-8945-81a4912ed147",
+      "employeeId": 2,
+      "employeeFirstName": "deneme",
+      "employeeLastName": "Deneme",
+      "employeeGender": "k",
+      "employeeAge": "3",
+      "employeePhone": "5",
+      "employeeEmail": "deneme@mail.com",
+      "employeePassword": "",
+      "employeeAddress": "Şırnak",
+      "employeeStatus": "Front End Developer",
+      "employeeRating": []
     }
   ],
   "products": [],
