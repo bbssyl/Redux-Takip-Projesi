@@ -1,0 +1,29 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "firstName": "Varol",
+      "lastname": "MAKSUTOĞLU",
+      "phone": "+901234567890",
+      "address": "İstanbul,TR"
+    }
+  ],
+  "employees": [
+    {
+      "id": "94cf306b-8cce-47ac-a1b2-470512da7621",
+      "employeeId": 123,
+      "employeeFirstName": "Barış",
+      "employeeLastName": "Benli",
+      "employeeGender": "e",
+      "employeeAge": 24,
+      "employeePhone": "0500000000",
+      "employeeEmail": "bbenli@example.com",
+      "employeePassword": "",
+      "employeeAddress": "Şırnak",
+      "employeeStatus": "Front End Developer",
+      "employeeRating": []
+    }
+  ],
+  "products": [],
+  "tasks": []
+}

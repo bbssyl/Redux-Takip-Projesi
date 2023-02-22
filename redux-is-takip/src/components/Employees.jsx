@@ -1,17 +1,21 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   deleteEmployee,
   deleteEmployees,
   fetchEmployees,
+  resetSelectedData,
+  setSelectedData,
 } from "../slices/employeesSlice";
+import { Modal } from "reactstrap";
 import { AiFillWarning, AiFillInfoCircle } from "react-icons/ai";
+import EmployeeModal from "./EmployeeModal";
 
 const Employees = () => {
   const employees = useSelector((state) => state.employee.employees);
   const dispatch = useDispatch();
-
+  const [modal, setModal] = useState(false);
   // const avarageOfRating = (id) => {
   //   employees &&
   //     employees.filter((employee) =>
@@ -22,9 +26,18 @@ const Employees = () => {
   //     );
   // };
 
-  const deleteFromDbEmployee = (id) => {
-    dispatch(deleteEmployee(id));
+  const handleOpenModal = (selectedData) => {
+    dispatch(setSelectedData(selectedData));
+    setModal(true);
+  };
+  const handleCloseModal = () => {
+    dispatch(resetSelectedData());
+    setModal(false);
+  };
+
+  const handleDelete = (id) => {
     dispatch(deleteEmployees(id));
+    dispatch(deleteEmployee(id));
   };
   useEffect(() => {
     dispatch(fetchEmployees());
@@ -64,34 +77,50 @@ const Employees = () => {
               {employees &&
                 employees.map((employee) => {
                   return (
-                    <tr key={employee.id}>
-                      <td>{employee.employeeId}</td>
-                      <td>
-                        {employee.employeeFirstName} {employee.employeeLastName}
-                      </td>
-                      <td>{employee.employeeEmail}</td>
-                      <td className="text-center">{employee.employeePhone}</td>
-                      <td className="text-center">{employee.employeeAge}</td>
-                      <td className="text-center">
-                        {employee.employeeGender === "k" ? "Kadın" : "Erkek"}
-                      </td>
-                      <td>{employee.employeeAddress}</td>
-                      <td>{employee.employeeStatus}</td>
-                      <td className="text-center">
-                        {/* {avarageOfRating(employee.employeeId)} */}
-                      </td>
-                      <td className="text-center d-flex gap-2 justify-content-center">
-                        <button className="btn bg-gradient btn-warning btn-sm">
-                          Düzenle
-                        </button>
-                        <button
-                          className="btn bg-gradient btn-danger btn-sm"
-                          onClick={() => deleteFromDbEmployee(employee.id)}
-                        >
-                          Sil
-                        </button>
-                      </td>
-                    </tr>
+                    <>
+                      <Modal isOpen={modal}>
+                        <EmployeeModal
+                          data={employee}
+                          handleCloseModal={handleCloseModal}
+                        />
+                      </Modal>
+                      <tr key={employee.id}>
+                        <td>{employee.employeeId}</td>
+                        <td>
+                          {employee.employeeFirstName}{" "}
+                          {employee.employeeLastName}
+                        </td>
+                        <td>{employee.employeeEmail}</td>
+                        <td className="text-center">
+                          {employee.employeePhone}
+                        </td>
+                        <td className="text-center">{employee.employeeAge}</td>
+                        <td className="text-center">
+                          {employee.employeeGender === "k" ? "Kadın" : "Erkek"}
+                        </td>
+                        <td>{employee.employeeAddress}</td>
+                        <td>{employee.employeeStatus}</td>
+                        <td className="text-center">
+                          {/* {avarageOfRating(employee.employeeId)} */}
+                        </td>
+                        <td className="text-center d-flex gap-2 justify-content-center">
+                          <button
+                            className="btn bg-gradient btn-warning btn-sm"
+                            onClick={() => {
+                              handleOpenModal(employee);
+                            }}
+                          >
+                            Düzenle
+                          </button>
+                          <button
+                            className="btn bg-gradient btn-danger btn-sm"
+                            onClick={() => handleDelete(employee.id)}
+                          >
+                            Sil
+                          </button>
+                        </td>
+                      </tr>
+                    </>
                   );
                 })}
             </tbody>

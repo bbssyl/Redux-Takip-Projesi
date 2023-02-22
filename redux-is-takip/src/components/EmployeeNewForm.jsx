@@ -2,6 +2,7 @@ import { Field, Form, Formik, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import { newEmployeeSchemas } from "../schemas/newEmployeeSchemas";
 import { addEmployee, postEmloyees } from "../slices/employeesSlice";
+import { v4 as uuid4 } from "uuid";
 
 const EmployeeNewForm = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const EmployeeNewForm = () => {
       <div className="container d-flex align-items-center justify-content-center mt-5 bg-white rounded p-4 bg-gradient">
         <Formik
           initialValues={{
+            id: uuid4(),
             employeeId: "",
             employeeFirstName: "",
             employeeLastName: "",

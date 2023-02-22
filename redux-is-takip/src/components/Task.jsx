@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 const Task = ({ taskId }) => {
   const employees = useSelector((state) => state.employee.employees);
   const data = employees?.filter((employee) => employee.employeeId === taskId);
-  console.log(data[0]);
   return (
     <>
       <div>
