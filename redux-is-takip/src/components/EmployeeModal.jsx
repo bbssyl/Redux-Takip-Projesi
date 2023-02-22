@@ -14,7 +14,6 @@ const EmployeeModal = ({ data, handleCloseModal }) => {
           initialValues={data}
           onSubmit={(values, { setSubmitting }) => {
             dispatch(updateEmployee(values));
-            dispatch(resetSelectedData());
             setSubmitting(false);
           }}
         >
