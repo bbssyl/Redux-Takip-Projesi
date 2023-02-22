@@ -22,6 +22,7 @@ const EmployeeModal = ({ data, handleCloseModal }) => {
               <Form>
                 <div className="mb-3">
                   <Field
+                    className="form-control"
                     name="employeeFirstName"
                     value={values.employeeFirstName}
                     onChange={(event) =>
@@ -31,6 +32,7 @@ const EmployeeModal = ({ data, handleCloseModal }) => {
                 </div>
                 <div className="mb-3">
                   <Field
+                    className="form-control"
                     name="employeeLastName"
                     value={values.employeeLastName}
                     onChange={(event) =>
@@ -40,6 +42,7 @@ const EmployeeModal = ({ data, handleCloseModal }) => {
                 </div>
                 <div className="mb-3">
                   <Field
+                    className="form-control"
                     name="employeeGender"
                     value={values.employeeGender}
                     onChange={(event) =>
@@ -49,6 +52,7 @@ const EmployeeModal = ({ data, handleCloseModal }) => {
                 </div>
                 <div className="mb-3">
                   <Field
+                    className="form-control"
                     name="employeeAge"
                     value={values.employeeAge}
                     onChange={(event) =>
@@ -58,6 +62,7 @@ const EmployeeModal = ({ data, handleCloseModal }) => {
                 </div>
                 <div className="mb-3">
                   <Field
+                    className="form-control"
                     name="employeePhone"
                     value={values.employeePhone}
                     onChange={(event) =>
@@ -67,6 +72,7 @@ const EmployeeModal = ({ data, handleCloseModal }) => {
                 </div>
                 <div className="mb-3">
                   <Field
+                    className="form-control"
                     name="employeeEmail"
                     value={values.employeeEmail}
                     onChange={(event) =>
@@ -76,6 +82,7 @@ const EmployeeModal = ({ data, handleCloseModal }) => {
                 </div>
                 <div className="mb-3">
                   <Field
+                    className="form-control"
                     name="employeeAddress"
                     value={values.employeeAddress}
                     onChange={(event) =>
@@ -85,6 +92,7 @@ const EmployeeModal = ({ data, handleCloseModal }) => {
                 </div>
                 <div className="mb-3">
                   <Field
+                    className="form-control"
                     name="employeeStatus"
                     value={values.employeeStatus}
                     onChange={(event) =>

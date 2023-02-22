@@ -25,5 +25,19 @@
     }
   ],
   "products": [],
-  "tasks": []
+  "tasks": [],
+  "status": [
+    {
+      "id": 1,
+      "name": "Front-End Developer"
+    },
+    {
+      "id": 1,
+      "name": "Back-End Developer"
+    },
+    {
+      "id": 1,
+      "name": "Fullstack Developer"
+    }
+  ]
 }

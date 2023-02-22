@@ -72,10 +72,7 @@ export const employeesSlice = createSlice({
       );
     });
     builder.addCase(updateEmployee.fulfilled, (state, action) => {
-      // state.employees = state.employees.filter(
-      //   (employee) => employee.id === action.payload.id
-      // );
-      state.employees.map((employee) => {
+      state.employees?.map((employee) => {
         if (employee.id === action.payload.id) {
           employee.employeeId = action.payload.employeeId;
           employee.employeeFirstName = action.payload.employeeFirstName;
@@ -88,6 +85,7 @@ export const employeesSlice = createSlice({
           employee.employeeAddress = action.payload.employeeAddress;
           employee.employeeStatus = action.payload.employeeStatus;
           employee.employeeRating = action.payload.employeeRating;
+
           return employee;
         } else {
           return employee;
