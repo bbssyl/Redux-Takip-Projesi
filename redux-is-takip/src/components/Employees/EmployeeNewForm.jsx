@@ -1,12 +1,22 @@
 import { Field, Form, Formik, ErrorMessage } from "formik";
-import { useDispatch } from "react-redux";
-import { newEmployeeSchemas } from "../schemas/newEmployeeSchemas";
-import { addEmployee, postEmloyees } from "../slices/employeesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { newEmployeeSchemas } from "../../schemas/newEmployeeSchemas";
+import {
+  addEmployee,
+  fetchStatus,
+  postEmloyees,
+} from "../../slices/employeesSlice";
 import { v4 as uuid4 } from "uuid";
-
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 const EmployeeNewForm = () => {
+  const employeeStatus = useSelector((state) => state.employee.employeeStatus);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    dispatch(fetchStatus());
+  }, [dispatch]);
   return (
     <div className="mh-100">
       <h4 className="text-center">Yeni Personel Kayıt Formu</h4>
@@ -23,13 +33,14 @@ const EmployeeNewForm = () => {
             employeeEmail: "",
             employeePassword: "",
             employeeAddress: "",
-            employeeStatus: "",
+            employeeStatus: "...",
             employeeRating: [],
           }}
           onSubmit={(value, { setSubmitting }) => {
             dispatch(postEmloyees(value));
             dispatch(addEmployee(value));
             setSubmitting(false);
+            navigate("/dashboard/employees");
           }}
           validationSchema={newEmployeeSchemas}
         >
@@ -94,7 +105,7 @@ const EmployeeNewForm = () => {
                         as="select"
                         id="employeeGender"
                         name="employeeGender"
-                        className="form-control"
+                        className="form-select"
                       >
                         <option>...</option>
                         <option value="e">Erkek</option>
@@ -162,7 +173,7 @@ const EmployeeNewForm = () => {
                   <div className="col-md-6">
                     <div className="form-floating mb-3">
                       <Field
-                        type="textarea"
+                        as="textarea"
                         id="employeeAddress"
                         name="employeeAddress"
                         className="form-control"
@@ -179,12 +190,21 @@ const EmployeeNewForm = () => {
                   <div className="col-md-6">
                     <div className="form-floating mb-3">
                       <Field
-                        type="text"
+                        as="select"
                         id="employeeStatus"
                         name="employeeStatus"
-                        className="form-control"
+                        className="form-select"
                         placeholder="Ünvan"
-                      />
+                      >
+                        <option>...</option>
+                        {employeeStatus.map((employee) => {
+                          return (
+                            <option key={employee.id} value={employee.name}>
+                              {employee.name}
+                            </option>
+                          );
+                        })}
+                      </Field>
                       <label htmlFor="employeeStatus">Ünvan</label>
                       <ErrorMessage
                         component="small"

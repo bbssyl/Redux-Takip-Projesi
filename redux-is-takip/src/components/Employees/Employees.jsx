@@ -7,7 +7,7 @@ import {
   fetchEmployees,
   resetSelectedData,
   setSelectedData,
-} from "../slices/employeesSlice";
+} from "../../slices/employeesSlice";
 import { Modal } from "reactstrap";
 import { AiFillWarning, AiFillInfoCircle } from "react-icons/ai";
 import EmployeeModal from "./EmployeeModal";
@@ -17,15 +17,15 @@ const Employees = () => {
   const employeeDetail = useSelector((state) => state.employee.employeeDetail);
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
-  // const avarageOfRating = (id) => {
-  //   employees &&
-  //     employees.filter((employee) =>
-  //       employee.employeeId !== id
-  //         ? employee.employeeRating.reduce((total, x) => total + x, 0) /
-  //           employee.employeeRating.length
-  //         : 0
-  //     );
-  // };
+
+  const avarageOfRating = (rating) => {
+    const avarage = rating.reduce((total, x) => total + x, 0) / rating.length;
+    if (rating.length > 0) {
+      return avarage;
+    } else {
+      return 0;
+    }
+  };
 
   const handleOpenModal = (selectedData) => {
     dispatch(setSelectedData(selectedData));
@@ -102,7 +102,7 @@ const Employees = () => {
                         <td>{employee.employeeAddress}</td>
                         <td>{employee.employeeStatus}</td>
                         <td className="text-center">
-                          {/* {avarageOfRating(employee.employeeId)} */}
+                          {avarageOfRating(employee.employeeRating)}
                         </td>
                         <td className="text-center d-flex gap-2 justify-content-center">
                           <button

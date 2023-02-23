@@ -3,6 +3,7 @@ import axios from "axios";
 const initialState = {
   employees: [],
   employeeDetail: [],
+  employeeStatus: [],
 };
 
 export const fetchEmployees = createAsyncThunk(
@@ -36,6 +37,13 @@ export const updateEmployee = createAsyncThunk(
       `http://localhost:5000/employees/${data.id}`,
       data
     );
+    return response.data;
+  }
+);
+export const fetchStatus = createAsyncThunk(
+  "employee/fetchStatus",
+  async () => {
+    const response = await axios.get("http://localhost:5000/status");
     return response.data;
   }
 );
@@ -91,6 +99,9 @@ export const employeesSlice = createSlice({
           return employee;
         }
       });
+    });
+    builder.addCase(fetchStatus.fulfilled, (state, action) => {
+      state.employeeStatus = action.payload;
     });
   },
 });

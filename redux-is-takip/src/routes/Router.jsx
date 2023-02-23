@@ -4,8 +4,8 @@ import RegisterView from "../views/RegisterView";
 import HomeView from "../views/HomeView";
 import PageNotFound from "../views/PageNotFound";
 import Dashboard from "../components/Dashboard";
-import Employees from "../components/Employees";
-import EmployeeNewForm from "../components/EmployeeNewForm";
+import Employees from "../components/Employees/Employees";
+import EmployeeNewForm from "../components/Employees/EmployeeNewForm";
 import Products from "../components/Products";
 import Tasks from "../components/Tasks";
 

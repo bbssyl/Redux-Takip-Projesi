@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEmployees } from "../slices/employeesSlice";
 import Card from "./Card";
-import EmployesTopList from "./EmployeesTopList";
+import EmployesTopList from "../components/Employees/EmployeesTopList";
 import JobsTopList from "./JobsTopList";
 
 const Dashboard = () => {

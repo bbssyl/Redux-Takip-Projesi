@@ -10,46 +10,18 @@
   ],
   "employees": [
     {
-      "id": "94cf306b-8cce-47ac-a1b2-470512da7621",
-      "employeeId": 123,
-      "employeeFirstName": "Barış",
-      "employeeLastName": "Benli",
-      "employeeGender": "e",
-      "employeeAge": 24,
-      "employeePhone": "5",
-      "employeeEmail": "bbenli@example.com",
-      "employeePassword": "",
-      "employeeAddress": "Şırnak",
-      "employeeStatus": "Front End Developer",
-      "employeeRating": []
-    },
-    {
-      "id": "73a6d02f-b20d-4a0d-83e8-a60e7f2c64c8",
+      "id": "f81ba27c-414b-4005-aae2-e148ed4353bb",
       "employeeId": 1,
       "employeeFirstName": "Barış",
       "employeeLastName": "Benli",
       "employeeGender": "e",
-      "employeeAge": "23",
-      "employeePhone": "5",
-      "employeeEmail": "e@mail.com",
+      "employeeAge": 32,
+      "employeePhone": "0500000000",
+      "employeeEmail": "bbenli@example.com",
       "employeePassword": "",
-      "employeeAddress": "Şırnak",
-      "employeeStatus": "Front End Developer",
-      "employeeRating": []
-    },
-    {
-      "id": "50d38082-a258-4045-8945-81a4912ed147",
-      "employeeId": 2,
-      "employeeFirstName": "deneme",
-      "employeeLastName": "Deneme",
-      "employeeGender": "k",
-      "employeeAge": "24",
-      "employeePhone": "5",
-      "employeeEmail": "deneme@mail.com",
-      "employeePassword": "",
-      "employeeAddress": "Şırnak",
-      "employeeStatus": "Front End Developer",
-      "employeeRating": []
+      "employeeAddress": "Şırnak,TR",
+      "employeeStatus": "Front-End Developer",
+      "employeeRating": [4, 4.5]
     }
   ],
   "products": [],
@@ -60,11 +32,11 @@
       "name": "Front-End Developer"
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "Back-End Developer"
     },
     {
-      "id": 1,
+      "id": 3,
       "name": "Fullstack Developer"
     }
   ]
