@@ -36,6 +36,20 @@
       "employeeAddress": "İZMİR",
       "employeeStatus": "Front-End Developer",
       "employeeRating": []
+    },
+    {
+      "id": "90d87119-8e05-45c0-be1f-6ea97c29b5b1",
+      "employeeId": 123,
+      "employeeFirstName": "deneme",
+      "employeeLastName": "Benli",
+      "employeeGender": "e",
+      "employeeAge": "2",
+      "employeePhone": "0500000000",
+      "employeeEmail": "bbenli@example.com",
+      "employeePassword": "",
+      "employeeAddress": "DENEME",
+      "employeeStatus": "Front-End Developer",
+      "employeeRating": []
     }
   ],
   "products": [
@@ -85,7 +99,20 @@
       "info": "Gaming Laptop"
     }
   ],
-  "tasks": [],
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Tamirat",
+      "info": "Mekanik arıza",
+      "employeeId": 1
+    },
+    {
+      "id": 2,
+      "name": "Tamirat",
+      "info": "Mekanik arıza",
+      "employeeId": 1
+    }
+  ],
   "status": [
     {
       "id": 1,

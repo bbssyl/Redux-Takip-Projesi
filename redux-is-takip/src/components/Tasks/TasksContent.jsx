@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-const Task = ({ taskId }) => {
+const TasksContent = ({ taskId, handleTaskDelete }) => {
   const employees = useSelector((state) => state.employee.employees);
   const data = employees?.filter((employee) => employee.employeeId === taskId);
   return (
@@ -25,4 +25,4 @@ const Task = ({ taskId }) => {
   );
 };
 
-export default Task;
+export default TasksContent;

@@ -22,10 +22,5 @@ export const updateEmployeeSchemas = Yup.object({
     .email("*Geçerli bir mail adresi girin")
     .required("*Bu alanın doldurulması zorunludur"),
   employeeAddress: Yup.string().required("*Bu alanın doldurulması zorunludur"),
-  employeeStatus: Yup.mixed()
-    .oneOf(
-      ["frontEndDeveloper", "backEndDeveloper", "fullStackDeveloper"],
-      "Geçerli bir ünvan seçin"
-    )
-    .required("*Bu alanın doldurulması zorunludur"),
+  employeeStatus: Yup.string().required("*Bu alanın doldurulması zorunludur"),
 });

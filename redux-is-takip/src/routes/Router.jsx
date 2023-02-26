@@ -7,7 +7,7 @@ import Dashboard from "../components/Dashboard";
 import Employees from "../components/Employees/Employees";
 import EmployeeNewForm from "../components/Employees/EmployeeNewForm";
 import Products from "../components/Products/Products";
-import Tasks from "../components/Tasks";
+import Tasks from "../components/Tasks/Tasks";
 
 const Router = () => {
   const routes = useRoutes([
