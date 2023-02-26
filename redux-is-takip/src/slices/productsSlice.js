@@ -39,7 +39,7 @@ export const productSlice = createSlice({
       );
     });
     builder.addCase(updateProduct.fulfilled, (state, action) => {
-      state.products.map((product) => {
+      state.products?.map((product) => {
         if (product.id === action.payload.id) {
           product.name = action.payload.name;
           product.type = action.payload.type;
