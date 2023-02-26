@@ -4,12 +4,15 @@ import { fetchEmployees } from "../slices/employeesSlice";
 import Card from "./Card";
 import EmployesTopList from "../components/Employees/EmployeesTopList";
 import JobsTopList from "./JobsTopList";
+import { fetchProducts } from "../slices/productsSlice";
 
 const Dashboard = () => {
   const employees = useSelector((state) => state.employee.employees);
+  const products = useSelector((state) => state.product.products);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchEmployees());
+    dispatch(fetchProducts());
   }, [dispatch]);
   return (
     <div>
@@ -19,7 +22,10 @@ const Dashboard = () => {
           count={employees && employees.length > 0 ? employees.length : 0}
           icon={""}
         />
-        <Card title={"Yardım Edilen Müşteri"} count={""} />
+        <Card
+          title={"Ürünler (Toplam)"}
+          count={products?.length > 0 ? products.length : 0}
+        />
         <Card title={"Bekleyen İş"} count={""} />
         <Card title={"Bitirilen İş (Toplam)"} count={""} />
       </div>

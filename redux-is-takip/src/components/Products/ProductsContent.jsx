@@ -1,9 +1,17 @@
-import { Button, Card, CardBody, CardText, CardTitle, Col } from "reactstrap";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardText,
+  CardTitle,
+  Col,
+  Row,
+} from "reactstrap";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 const ProductsContent = ({ products, handleProductDelete }) => {
   return (
     <div className="">
-      <div className="row p-4 g-4">
+      <Row sm={1} className="p-4 g-4">
         {products?.map((product) => {
           return (
             <Col md={4} key={product.id}>
@@ -53,7 +61,7 @@ const ProductsContent = ({ products, handleProductDelete }) => {
             </Col>
           );
         })}
-      </div>
+      </Row>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { newEmployeeSchemas } from "../../schemas/newEmployeeSchemas";
 import {
   addEmployee,
-  fetchStatus,
+  fetchEmployeeStatus,
   postEmloyees,
 } from "../../slices/employeesSlice";
 import { v4 as uuid4 } from "uuid";
@@ -15,7 +15,7 @@ const EmployeeNewForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchStatus());
+    dispatch(fetchEmployeeStatus());
   }, [dispatch]);
   return (
     <div className="mh-100">

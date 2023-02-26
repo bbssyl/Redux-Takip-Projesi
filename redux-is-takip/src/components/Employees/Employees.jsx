@@ -15,9 +15,8 @@ import EmployeeModal from "./EmployeeModal";
 const Employees = () => {
   const employees = useSelector((state) => state.employee.employees);
   const employeeDetail = useSelector((state) => state.employee.employeeDetail);
-  const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
-
+  const dispatch = useDispatch();
   const avarageOfRating = (rating) => {
     const avarage = rating.reduce((total, x) => total + x, 0) / rating.length;
     if (rating.length > 0) {

@@ -22,6 +22,20 @@
       "employeeAddress": "Şırnak,TR",
       "employeeStatus": "Front-End Developer",
       "employeeRating": [4, 4.5]
+    },
+    {
+      "id": "d5f33727-789d-4324-b0dc-5784ce02ae5d",
+      "employeeId": 2,
+      "employeeFirstName": "Barış",
+      "employeeLastName": "Deneme",
+      "employeeGender": "e",
+      "employeeAge": 3,
+      "employeePhone": "0500000000",
+      "employeeEmail": "bbenli@example.com",
+      "employeePassword": "",
+      "employeeAddress": "İZMİR",
+      "employeeStatus": "Front-End Developer",
+      "employeeRating": []
     }
   ],
   "products": [

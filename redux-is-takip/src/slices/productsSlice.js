@@ -41,12 +41,12 @@ export const productSlice = createSlice({
     builder.addCase(updateProduct.fulfilled, (state, action) => {
       state.products.map((product) => {
         if (product.id === action.payload.id) {
-          state.products.name = action.payload.name;
-          state.products.type = action.payload.type;
-          state.products.brand = action.payload.brand;
-          state.products.model = action.payload.model;
-          state.products.price = action.payload.price;
-          state.products.info = action.payload.info;
+          product.name = action.payload.name;
+          product.type = action.payload.type;
+          product.brand = action.payload.brand;
+          product.model = action.payload.model;
+          product.price = action.payload.price;
+          product.info = action.payload.info;
           return product;
         } else {
           return product;
@@ -65,7 +65,7 @@ export const {
 export default productSlice.reducer;
 
 export const fetchProducts = createAsyncThunk(
-  "prodcut/fetchProducts",
+  "product/fetchProducts",
   async () => {
     const response = await axios.get(initialState.url);
     return response.data;
