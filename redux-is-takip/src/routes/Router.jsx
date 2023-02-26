@@ -6,7 +6,7 @@ import PageNotFound from "../views/PageNotFound";
 import Dashboard from "../components/Dashboard";
 import Employees from "../components/Employees/Employees";
 import EmployeeNewForm from "../components/Employees/EmployeeNewForm";
-import Products from "../components/Products";
+import Products from "../components/Products/Products";
 import Tasks from "../components/Tasks";
 
 const Router = () => {
@@ -29,7 +29,10 @@ const Router = () => {
           path: "newEmployee",
           element: <EmployeeNewForm />,
         },
-        { path: "products", element: <Products /> },
+        {
+          path: "products",
+          element: <Products />,
+        },
         {
           path: "tasks",
           element: <Tasks />,

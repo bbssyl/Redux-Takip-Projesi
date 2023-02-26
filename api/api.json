@@ -24,7 +24,53 @@
       "employeeRating": [4, 4.5]
     }
   ],
-  "products": [],
+  "products": [
+    {
+      "id": 1,
+      "name": "Çamaşır Makinesi",
+      "type": "Beyaz Eşya",
+      "brand": "Arçelik",
+      "model": "H300",
+      "price": 10000,
+      "info": "10 KG A++ Enerji sınıfına sahip"
+    },
+    {
+      "id": 2,
+      "name": "Bulaşık Makinesi",
+      "type": "Beyaz Eşya",
+      "brand": "Bosch",
+      "model": "H300",
+      "price": 8000,
+      "info": "5 Programlı A++ Enerji sınıfına sahip"
+    },
+    {
+      "id": 3,
+      "name": "Mini Fırın",
+      "type": "Küçük Ev Aletleri",
+      "brand": "BEKO",
+      "model": "H300",
+      "price": 2000,
+      "info": "Turbolu 12 programlı taşınabilir"
+    },
+    {
+      "id": 4,
+      "name": "Dizüstü Bilgisayar",
+      "type": "Teknoloji",
+      "brand": "Monster",
+      "model": "Tulpar v20.2",
+      "price": 23000,
+      "info": "Gaming Laptop"
+    },
+    {
+      "id": 5,
+      "name": "DENEME Bilgisayar",
+      "type": "Teknoloji",
+      "brand": "Monster",
+      "model": "Tulpar v20.2",
+      "price": 23000,
+      "info": "Gaming Laptop"
+    }
+  ],
   "tasks": [],
   "status": [
     {

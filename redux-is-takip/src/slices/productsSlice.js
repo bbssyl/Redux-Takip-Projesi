@@ -46,6 +46,7 @@ export const productSlice = createSlice({
           state.products.brand = action.payload.brand;
           state.products.model = action.payload.model;
           state.products.price = action.payload.price;
+          state.products.info = action.payload.info;
           return product;
         } else {
           return product;
