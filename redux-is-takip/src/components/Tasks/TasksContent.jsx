@@ -1,28 +1,22 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import TasksUserContent from "./TasksUserContent";
 
-const TasksContent = ({ taskId, handleTaskDelete }) => {
-  const employees = useSelector((state) => state.employee.employees);
-  const data = employees?.filter((employee) => employee.employeeId === taskId);
-  return (
-    <>
-      <div>
-        <small>
-          {data[0]?.employeeFirstName} {data[0]?.employeeLastName}
-        </small>
+const TasksContent = ({ tasks, handleTaskDelete }) => {
+  return tasks?.map((task) => (
+    <div
+      className="card"
+      key={task.id}
+      onClick={() => handleTaskDelete(task.id)}
+    >
+      <div className="card-body">
+        <h4 className="card-title">{task.title}</h4>
+        <p className="card-text">{task.info}</p>
+        <div className="">
+          <TasksUserContent taskId={task.employeeId} />
+        </div>
       </div>
-      <div>
-        <small>{data[0]?.employeePhone}</small>
-      </div>
-      <div>
-        <small className="fst-italic text-secondary">
-          {data[0]?.employeeRating.length > 0
-            ? data[0]?.employeeRating
-            : "Personele girilen değerlendirme puanı bulunmamaktadır"}
-        </small>
-      </div>
-    </>
-  );
+    </div>
+  ));
 };
 
 export default TasksContent;

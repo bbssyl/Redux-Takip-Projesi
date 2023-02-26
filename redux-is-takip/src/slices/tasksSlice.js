@@ -3,6 +3,7 @@ import axios from "axios";
 const initialState = {
   url: "http://localhost:5000/tasks/",
   tasks: [],
+  taskDetail: [],
 };
 
 export const tasksSlices = createSlice({
@@ -18,7 +19,7 @@ export const tasksSlices = createSlice({
       state.tasks = action.payload;
     });
     builder.addCase(deleteTask.fulfilled, (state, action) => {
-      state.tasks = state.tasks.filter((task) => task.id !== action.payload.id);
+      state.tasks = state.tasks.filter((task) => task.id !== action.payload);
     });
   },
 });

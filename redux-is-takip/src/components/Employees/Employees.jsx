@@ -63,7 +63,7 @@ const Employees = () => {
           </button>
         </div>
       </div>
-      {employees && employees.length > 0 ? (
+      {employees?.length > 0 ? (
         <EmployeesContent
           employees={employees}
           avarageOfRating={avarageOfRating}

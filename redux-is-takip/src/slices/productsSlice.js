@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
 const initialState = {
   url: "http://localhost:5000/products/",
   products: [],
@@ -35,7 +34,7 @@ export const productSlice = createSlice({
     });
     builder.addCase(deleteProduct.fulfilled, (state, action) => {
       state.products = state.products.filter(
-        (product) => product.id !== action.payload.id
+        (product) => product.id !== action.payload
       );
     });
     builder.addCase(updateProduct.fulfilled, (state, action) => {

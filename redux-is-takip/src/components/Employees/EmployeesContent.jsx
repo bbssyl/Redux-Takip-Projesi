@@ -24,46 +24,43 @@ const EmployeesContent = ({
           </tr>
         </thead>
         <tbody>
-          {employees &&
-            employees.map((employee) => {
-              return (
-                <>
-                  <tr key={employee.id}>
-                    <td>{employee.employeeId}</td>
-                    <td>
-                      {employee.employeeFirstName} {employee.employeeLastName}
-                    </td>
-                    <td>{employee.employeeEmail}</td>
-                    <td className="text-center">{employee.employeePhone}</td>
-                    <td className="text-center">{employee.employeeAge}</td>
-                    <td className="text-center">
-                      {employee.employeeGender === "k" ? "Kadın" : "Erkek"}
-                    </td>
-                    <td>{employee.employeeAddress}</td>
-                    <td>{employee.employeeStatus}</td>
-                    <td className="text-center">
-                      {avarageOfRating(employee.employeeRating)}
-                    </td>
-                    <td className="text-center d-flex gap-2 justify-content-center">
-                      <button
-                        className="btn bg-gradient btn-warning btn-sm"
-                        onClick={() => {
-                          handleOpenModal(employee);
-                        }}
-                      >
-                        Düzenle
-                      </button>
-                      <button
-                        className="btn bg-gradient btn-danger btn-sm"
-                        onClick={() => handleDelete(employee.id)}
-                      >
-                        Sil
-                      </button>
-                    </td>
-                  </tr>
-                </>
-              );
-            })}
+          {employees?.map((employee) => {
+            return (
+              <tr key={employee.id}>
+                <td>{employee.employeeId}</td>
+                <td>
+                  {employee.employeeFirstName} {employee.employeeLastName}
+                </td>
+                <td>{employee.employeeEmail}</td>
+                <td className="text-center">{employee.employeePhone}</td>
+                <td className="text-center">{employee.employeeAge}</td>
+                <td className="text-center">
+                  {employee.employeeGender === "k" ? "Kadın" : "Erkek"}
+                </td>
+                <td>{employee.employeeAddress}</td>
+                <td>{employee.employeeStatus}</td>
+                <td className="text-center">
+                  {avarageOfRating(employee.employeeRating)}
+                </td>
+                <td className="text-center d-flex gap-2 justify-content-center">
+                  <button
+                    className="btn bg-gradient btn-warning btn-sm"
+                    onClick={() => {
+                      handleOpenModal(employee);
+                    }}
+                  >
+                    Düzenle
+                  </button>
+                  <button
+                    className="btn bg-gradient btn-danger btn-sm"
+                    onClick={() => handleDelete(employee.id)}
+                  >
+                    Sil
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

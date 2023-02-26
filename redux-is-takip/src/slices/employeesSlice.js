@@ -34,7 +34,7 @@ export const employeesSlice = createSlice({
     });
     builder.addCase(deleteEmployee.fulfilled, (state, action) => {
       state.employees = state.employees.filter(
-        (employee) => employee.id !== action.payload.id
+        (employee) => employee.id !== action.payload
       );
     });
     builder.addCase(updateEmployee.fulfilled, (state, action) => {

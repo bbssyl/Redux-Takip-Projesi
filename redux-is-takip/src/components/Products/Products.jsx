@@ -23,10 +23,15 @@ const Products = () => {
   return (
     <div className="row g-4">
       <ProductsNavbar />
-      <ProductsContent
-        products={products}
-        handleProductDelete={handleProductDelete}
-      />
+      <h4>Ürünler</h4>
+      {products?.length > 0 ? (
+        <ProductsContent
+          products={products}
+          handleProductDelete={handleProductDelete}
+        />
+      ) : (
+        <div className="alert alert-success">Kayıtlı ürün bulunmamaktadır.</div>
+      )}
     </div>
   );
 };

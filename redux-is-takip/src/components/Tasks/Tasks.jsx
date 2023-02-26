@@ -9,8 +9,8 @@ const Tasks = () => {
   const dispatch = useDispatch();
 
   const handleTaskDelete = (id) => {
-    dispatch(removeTask(id));
     dispatch(deleteTask(id));
+    dispatch(removeTask(id));
   };
   useEffect(() => {
     dispatch(fetchTasks());
@@ -19,22 +19,8 @@ const Tasks = () => {
   return (
     <div>
       <h4>Görevler</h4>
-      {tasks && tasks.length > 0 ? (
-        tasks.map((task) => (
-          <div
-            className="card"
-            key={task.id}
-            onClick={() => handleTaskDelete(task.id)}
-          >
-            <div className="card-body">
-              <h4 className="card-title">{task.title}</h4>
-              <p className="card-text">{task.info}</p>
-              <div className="">
-                <TasksContent taskId={task.employeeId} />
-              </div>
-            </div>
-          </div>
-        ))
+      {tasks?.length > 0 ? (
+        <TasksContent tasks={tasks} handleTaskDelete={handleTaskDelete} />
       ) : (
         <div className="alert alert-success">Hiçbir görev bulunmamaktadır.</div>
       )}
