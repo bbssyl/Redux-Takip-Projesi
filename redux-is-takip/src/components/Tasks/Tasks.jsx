@@ -1,23 +1,29 @@
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchEmployees } from "../../slices/employeesSlice";
-import { deleteTask, fetchTasks, removeTask } from "../../slices/tasksSlice";
 import TasksContent from "./TasksContent";
+import bgTask from "../../images/jobs.png";
+import { deleteTask, fetchTasks } from "../api/api";
 
 const Tasks = () => {
   const tasks = useSelector((state) => state.task.tasks);
   const dispatch = useDispatch();
-
   const handleTaskDelete = (id) => {
     dispatch(deleteTask(id));
-    dispatch(removeTask(id));
   };
   useEffect(() => {
     dispatch(fetchTasks());
-    dispatch(fetchEmployees());
   }, [dispatch]);
   return (
-    <div>
+    <div
+      className="vh-100"
+      style={{
+        background: `url(${bgTask})`,
+        backgroundSize: "600px",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "right bottom",
+      }}
+    >
       <h4>Görevler</h4>
       {tasks?.length > 0 ? (
         <TasksContent tasks={tasks} handleTaskDelete={handleTaskDelete} />
