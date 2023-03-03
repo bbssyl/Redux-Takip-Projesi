@@ -30,7 +30,7 @@ export const productSlice = createSlice({
       state.products = action.payload;
     });
     builder.addCase(postProduct.fulfilled, (state, action) => {
-      state.products.push = action.payload;
+      state.products.push(action.payload);
     });
     builder.addCase(deleteProduct.fulfilled, (state, action) => {
       state.products = state.products.filter(

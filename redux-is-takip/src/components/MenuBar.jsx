@@ -4,38 +4,38 @@ import { useNavigate } from "react-router-dom";
 const MenuBar = () => {
   const navigate = useNavigate();
   return (
-    <div className="container-fluid">
-      <div className="list-group list-group-flush">
+    <div className="h-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-500 text-blue-100 rounded-2xl shadow-md shadow-gray-500 sm:py-2 max-[640px]:py-2">
+      <div className="flex xl:flex-col md:flex-row sm:flex-col max-[640px]:flex-col gap-2">
         <button
           type="button"
-          className="list-group-item list-group-item-action bg-transparent border-0 d-flex align-items-center gap-2"
+          className="flex items-center gap-2 hover:bg-blue-50 hover:text-blue-700 ease-in-out duration-500 p-2 rounded-lg"
           onClick={() => navigate("/dashboard")}
         >
-          <FaHome />
+          <FaHome size={"1.5rem"} />
           Dashboard
         </button>
         <button
           type="button"
-          className="list-group-item list-group-item-action bg-transparent border-0 d-flex align-items-center gap-2"
+          className="flex items-center gap-2 hover:bg-blue-50 hover:text-blue-700 ease-in-out duration-500 p-2 rounded-lg"
           onClick={() => navigate("/dashboard/employees")}
         >
-          <FaUsers />
+          <FaUsers size={"1.5rem"} />
           Personel
         </button>
         <button
           type="button"
-          className="list-group-item list-group-item-action bg-transparent border-0 d-flex align-items-center gap-2"
+          className="flex items-center gap-2 hover:bg-blue-50 hover:text-blue-700 ease-in-out duration-500 p-2 rounded-lg"
           onClick={() => navigate("/dashboard/products")}
         >
-          <MdLocalGroceryStore />
+          <MdLocalGroceryStore size={"1.5rem"} />
           Ürünler
         </button>
         <button
           type="button"
-          className="list-group-item list-group-item-action bg-transparent border-0 d-flex align-items-center gap-2"
+          className="flex items-center gap-2 hover:bg-blue-50 hover:text-blue-700 ease-in-out duration-500 p-2 rounded-lg"
           onClick={() => navigate("/dashboard/tasks")}
         >
-          <FaTasks />
+          <FaTasks size={"1.5rem"} />
           Görevler
         </button>
       </div>

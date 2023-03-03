@@ -8,7 +8,6 @@ import {
   resetSelectedData,
   setSelectedData,
 } from "../../slices/employeesSlice";
-import { Modal } from "reactstrap";
 import { AiFillWarning, AiFillInfoCircle } from "react-icons/ai";
 import EmployeeModal from "./EmployeeModal";
 import EmployeesContent from "./EmployeesContent";
@@ -16,7 +15,7 @@ import EmployeesContent from "./EmployeesContent";
 const Employees = () => {
   const employees = useSelector((state) => state.employee.employees);
   const employeeDetail = useSelector((state) => state.employee.employeeDetail);
-  const [modal, setModal] = useState(false);
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const avarageOfRating = (rating) => {
     const avarage = rating.reduce((total, x) => total + x, 0) / rating.length;
@@ -29,34 +28,36 @@ const Employees = () => {
 
   const handleOpenModal = (selectedData) => {
     dispatch(setSelectedData(selectedData));
-    setModal(true);
+    setOpen(true);
   };
   const handleCloseModal = () => {
     dispatch(resetSelectedData());
-    setModal(false);
+    setOpen(false);
   };
 
   const handleDelete = (id) => {
-    dispatch(deleteEmployee(id));
     dispatch(removeEmployee(id));
+    dispatch(deleteEmployee(id));
   };
   useEffect(() => {
     dispatch(fetchEmployees());
   }, [dispatch]);
+
   const navigate = useNavigate();
   return (
     <div>
-      <Modal isOpen={modal}>
-        <EmployeeModal
-          data={employeeDetail}
-          handleCloseModal={handleCloseModal}
-        />
-      </Modal>
-      <div className="border-bottom p-3">
-        <h4 className="text-center">Personel Listesi</h4>
-        <div className="d-flex justify-content-end">
+      <EmployeeModal
+        data={employeeDetail}
+        open={open}
+        setOpen={setOpen}
+        handleCloseModal={handleCloseModal}
+      />
+
+      <div className="border-b p-3 flex flex-row justify-between items-center gap-2">
+        <h4 className="text-blue-400">Personel Listesi</h4>
+        <div>
           <button
-            className="btn btn-primary bg-gradient btn-sm"
+            className="text-blue-700 bg-blue-200 rounded-lg p-2 px-4 hover:bg-blue-600 hover:text-blue-50 ease-in-out duration-500"
             onClick={() => navigate("/dashboard/newEmployee")}
           >
             Yeni Personel
@@ -71,17 +72,17 @@ const Employees = () => {
           handleDelete={handleDelete}
         />
       ) : (
-        <>
-          <div className="alert alert-warning d-flex gap-2 align-items-center">
-            <AiFillWarning />
+        <div className="mt-3 flex flex-col gap-2">
+          <div className="text-yellow-700 bg-yellow-200 flex gap-2 items-center p-4 rounded-lg">
+            <AiFillWarning size={"2rem"} />
             Şirkette çalışan personel bulunmamaktadır.
           </div>
-          <div className="alert alert-primary d-flex gap-2 align-items-center">
-            <AiFillInfoCircle />
+          <div className="text-blue-700 bg-blue-200 flex gap-2 items-center p-4 rounded-lg">
+            <AiFillInfoCircle size={"2rem"} />
             Sağ üst köşede yer alan "Yeni Personel" butonu ile personel
             ekleyebilirsiniz.
           </div>
-        </>
+        </div>
       )}
     </div>
   );

@@ -50,6 +50,20 @@
       "employeeAddress": "DENEME",
       "employeeStatus": "Front-End Developer",
       "employeeRating": []
+    },
+    {
+      "id": "08cd5376-4eb0-46b3-9d3d-35b2203c0a53",
+      "employeeId": 123,
+      "employeeFirstName": "Barış",
+      "employeeLastName": "Benli",
+      "employeeGender": "e",
+      "employeeAge": 23,
+      "employeePhone": "0500000000",
+      "employeeEmail": "bbenli@example.com",
+      "employeePassword": "",
+      "employeeAddress": "ÇANAKKALE -",
+      "employeeStatus": "Front-End Developer",
+      "employeeRating": []
     }
   ],
   "products": [
@@ -104,13 +118,19 @@
       "id": 1,
       "name": "Tamirat",
       "info": "Mekanik arıza",
+      "created_at": "23.02.2023",
+      "urgency": "Normal",
+      "isDone": true,
       "employeeId": 1
     },
     {
       "id": 2,
       "name": "Tamirat",
       "info": "Mekanik arıza",
-      "employeeId": 1
+      "created_at": "23.02.2023",
+      "urgency": "Normal",
+      "isDone": true,
+      "employeeId": 2
     }
   ],
   "status": [

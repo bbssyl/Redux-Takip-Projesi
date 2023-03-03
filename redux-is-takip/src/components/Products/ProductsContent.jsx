@@ -1,68 +1,69 @@
-import {
-  Button,
-  Card,
-  CardBody,
-  CardText,
-  CardTitle,
-  Col,
-  Row,
-} from "reactstrap";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 const ProductsContent = ({ products, handleProductDelete }) => {
   return (
-    <div className="">
-      <Row sm={1} className="p-4 g-4">
+    <>
+      <div className="grid gap-3 xl:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
         {products?.map((product) => {
           return (
-            <Col md={4} key={product.id}>
-              <Card className="border-0 shadow-sm">
-                <CardBody>
-                  <CardTitle className="d-flex align-items-center justify-content-between">
-                    <span className="fw-bold">{product.name}</span>
-                    <div className="d-flex gap-2 align-items-center">
-                      <small className="fw-lighter fst-italic">
+            <div className="w-full" key={product.id}>
+              <div className="shadow-md  p-4 h-full rounded-lg">
+                <div className="flex flex-col gap-2">
+                  <div className="flex justify-between">
+                    <span className="font-bold text-blue-400">
+                      {product.name}
+                    </span>
+                    <div className="flex gap-2 items-center">
+                      <small className="font-ligth italic text-gray-400">
                         {product.type}
                       </small>
-                      <Button
-                        color="white"
-                        className="btn-sm text-secondary fs-5"
-                      >
+                      <button className="text-sm text-gray-400 hover:bg-gray-500 hover:text-gray-50 p-1 rounded-full ease-in-out duration-500">
                         <AiFillEdit />
-                      </Button>
-                      <Button
-                        color="white"
-                        className="btn-sm text-danger fs-5"
+                      </button>
+
+                      <button
                         onClick={() => handleProductDelete(product.id)}
+                        className="text-sm text-red-400 hover:bg-red-500 hover:text-red-50 p-1 rounded-full ease-in-out duration-500"
                       >
                         <AiFillDelete />
-                      </Button>
+                      </button>
                     </div>
-                  </CardTitle>
-                  <div className="d-flex justify-content-between">
-                    <CardText>
-                      <span className="fw-bold">Marka: </span>
-                      {product.brand}
-                    </CardText>
-                    <CardText>
-                      <span className="fw-bold">Model: </span>
-                      {product.model}
-                    </CardText>
-                    <CardText>
-                      <span className="fw-bold">Fiyat: </span>
-                      {product.price}
-                    </CardText>
                   </div>
-                  <CardText>
-                    <span className="fw-bold">Açıklama: </span>
-                    {product.info}
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
+                  <div>
+                    <div className="flex flex-col gap-2">
+                      <div className="flex flex-row flex-wrap items-center justify-between">
+                        <div className="flex flex-col gap-2">
+                          <div>
+                            <span className="font-bold">Marka: </span>
+                            <span className="">{product.brand}</span>
+                          </div>
+                          <div>
+                            <span className="font-bold">Model: </span>
+                            <span className="">{product.model}</span>
+                          </div>
+                        </div>
+                        <div>
+                          <span className="bg-gradient-to-r from-blue-500 to-indigo-500 text-blue-50 rounded-3xl p-2">
+                            ₺{product.price}
+                          </span>
+                        </div>
+                      </div>
+                      <div>
+                        <p>
+                          <span className="font-bold">Açıklama: </span>
+                          <span className="text-gray-500 italic font-light">
+                            {product.info}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           );
         })}
-      </Row>
-    </div>
+      </div>
+    </>
   );
 };
 

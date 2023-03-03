@@ -3,12 +3,12 @@ import { Outlet } from "react-router-dom";
 
 const HomeView = () => {
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-md-2 bg-white bg-gradient pt-4 vh-100 ">
+    <div>
+      <div className="flex xl:flex-row lg:flex-col md:flex-col sm:flex-col max-[640px]:flex-col">
+        <div className=" xl:h-screen xl:w-2/12 px-4">
           <MenuBar />
         </div>
-        <div className="col-md-10 bg-light pt-4">
+        <div className="pt-4 h-full xl:w-10/12">
           <Outlet />
         </div>
       </div>

@@ -2,7 +2,7 @@ import { setTasks } from "../../slices/tasksSlice";
 import axios from "axios";
 
 export const deleteTask = (id) => async (dispatch) => {
-  const response = await axios.delete("http://localhost:5000/tasks/" + id);
+  const response = await axios.delete(`http://localhost:5000/tasks/${id}`);
   dispatch(setTasks(response.data));
 };
 

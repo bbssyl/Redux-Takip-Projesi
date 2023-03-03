@@ -15,7 +15,7 @@ const TasksUserContent = ({ taskId }) => {
         <small>{data[0]?.employeePhone}</small>
       </div>
       <div>
-        <small className="fst-italic text-secondary">
+        <small className="italic text-gray-500">
           {data[0]?.employeeRating.length > 0
             ? data[0]?.employeeRating
             : "Personele girilen değerlendirme puanı bulunmamaktadır"}

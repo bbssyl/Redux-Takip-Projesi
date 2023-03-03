@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteProduct,
@@ -20,17 +20,20 @@ const Products = () => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+
   return (
-    <div className="row g-4">
+    <div className="flex flex-col gap-2">
+      <h4 className="text-blue-400">Ürünler</h4>
       <ProductsNavbar />
-      <h4>Ürünler</h4>
       {products?.length > 0 ? (
         <ProductsContent
           products={products}
           handleProductDelete={handleProductDelete}
         />
       ) : (
-        <div className="alert alert-success">Kayıtlı ürün bulunmamaktadır.</div>
+        <div className="text-green-700 bg-green-200 p-4 rounded-lg">
+          Kayıtlı ürün bulunmamaktadır.
+        </div>
       )}
     </div>
   );

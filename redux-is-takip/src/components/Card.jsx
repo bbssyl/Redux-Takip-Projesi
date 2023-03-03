@@ -2,13 +2,17 @@ import React from "react";
 import cardBg from "../images/cardBackground.png";
 const Card = (props) => {
   return (
-    <div className="col-md-3">
-      <div className="card text-bg-light">
-        <img src={cardBg} className="card-img" alt={cardBg} height={200} />
-        <div className="card-img-overlay">
-          <h5 className="card-title">{props.title}</h5>
-          <div className="card-body d-flex align-items-center justify-content-end text-white gap-2">
-            <p className="card-text display-1 fw-bolder">{props.count}</p>
+    <div className="w-full">
+      <div className="flex flex-col relative rounded-lg h-full shadow-md shadow-gray-300">
+        <img
+          src={cardBg}
+          alt={cardBg}
+          className="rounded-lg absolute h-full w-full"
+        />
+        <div className="z-10 p-6">
+          <h5 className="text-gray-500">{props.title}</h5>
+          <div className="p-4 flex justify-end text-white gap-2">
+            <p className="font-extrabold text-6xl">{props.count}</p>
           </div>
         </div>
       </div>

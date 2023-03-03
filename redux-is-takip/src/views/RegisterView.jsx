@@ -1,7 +1,7 @@
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import { registerSchemas } from "../schemas/registerSchemas";
 import loginImage from "../images/loginImage.jpg";
-
+import { register } from "../firebase/Config";
 const RegisterView = () => {
   return (
     <div className="mh-100">
@@ -11,14 +11,12 @@ const RegisterView = () => {
             <h4 className="text-secondary mb-5">Kayıt Ol</h4>
             <Formik
               initialValues={{
-                employeeFirstName: "",
-                employeeLastName: "",
                 employeeEmail: "",
                 employeePassword: "",
-                employeeAddress: "",
+                employeeConfirmPassword: "",
               }}
-              onSubmit={(values, { setSubmitting }) => {
-                console.log(values);
+              onSubmit={async (values, { setSubmitting }) => {
+                await register(values.employeeEmail, values.employeePassword);
                 setSubmitting(false);
               }}
               validationSchema={registerSchemas}
@@ -79,60 +77,7 @@ const RegisterView = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="form-floating mb-3">
-                        <Field
-                          type="text"
-                          id="employeeFirstName"
-                          name="employeeFirstName"
-                          className="form-control"
-                          placeholder="İsim"
-                        />
-                        <label htmlFor="employeeFirstName">İsim</label>
-
-                        <ErrorMessage
-                          name="employeeFirstName"
-                          component="small"
-                          className="text-danger"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-floating mb-3">
-                        <Field
-                          type="text"
-                          id="employeeLastName"
-                          name="employeeLastName"
-                          className="form-control"
-                          placeholder="Soyisim"
-                        />
-                        <label htmlFor="employeeLastName">Soyisim</label>
-
-                        <ErrorMessage
-                          name="employeeLastName"
-                          component="small"
-                          className="text-danger"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="form-floating mb-3">
-                    <Field
-                      type="textarea"
-                      id="employeeAddress"
-                      name="employeeAddress"
-                      className="form-control"
-                      placeholder="Adres"
-                    />
-                    <label htmlFor="employeeAddress">Adres</label>
-
-                    <ErrorMessage
-                      name="employeeAddress"
-                      component="small"
-                      className="text-danger"
-                    />
-                  </div>
+                  -
                   <div className="d-grid">
                     <button
                       type="submit"

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 const initialState = {
+  url: "http://localhost:5000/employees/",
   employees: [],
   employeeDetail: [],
   employeeStatus: [],
@@ -75,23 +76,21 @@ export default employeesSlice.reducer;
 export const fetchEmployees = createAsyncThunk(
   "employee/fetchEmployees",
   async () => {
-    const response = await axios.get("http://localhost:5000/employees");
+    const response = await axios.get(initialState.url);
     return response.data;
   }
 );
 export const postEmloyees = createAsyncThunk(
   "employee/postEmloyee",
   async (data) => {
-    const response = await axios.post("http://localhost:5000/employees", data);
+    const response = await axios.post(initialState.url, data);
     return response.data;
   }
 );
 export const deleteEmployee = createAsyncThunk(
   "employee/deleteEmployee",
   async (id) => {
-    const response = await axios.delete(
-      `http://localhost:5000/employees/${id}`
-    );
+    const response = await axios.delete(initialState.url + id);
     return response.data;
   }
 );
@@ -99,10 +98,7 @@ export const deleteEmployee = createAsyncThunk(
 export const updateEmployee = createAsyncThunk(
   "employee/updateEmployee",
   async (data) => {
-    const response = await axios.put(
-      `http://localhost:5000/employees/${data.id}`,
-      data
-    );
+    const response = await axios.put(initialState.url + data.id, data);
     return response.data;
   }
 );
