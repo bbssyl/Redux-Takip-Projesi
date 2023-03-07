@@ -2,14 +2,14 @@
 
 
 > ### Tamamlananlar
-- [x] Personel CRUD işlemleri
-- [x] Ürün CRUD işlemleri
-- [x] Görev CRUD işlemleri
-- [x] Dashboard işlemleri
+> - [x] Personel CRUD işlemleri
+> - [x] Görev CRUD işlemleri
+> - [x] Dashboard işlemleri
 
 > ### Bekleyenler
-- [ ] Müşteri CRUD işlemleri
-- [ ] Personel puanlama işlemi
+> - [] Ürün CRUD işlemleri
+> - [ ] Müşteri CRUD işlemleri
+> - [ ] Personel puanlama işlemi
 
 > ### Kullanılan kütüphaneler ve bileşenler
 
