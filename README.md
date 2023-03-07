@@ -7,7 +7,7 @@
 > - [x] Dashboard işlemleri
 
 > ### Bekleyenler
-> - [] Ürün CRUD işlemleri
+> - [ ] Ürün CRUD işlemleri
 > - [ ] Müşteri CRUD işlemleri
 > - [ ] Personel puanlama işlemi
 
