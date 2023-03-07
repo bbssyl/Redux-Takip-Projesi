@@ -71,21 +71,21 @@ export const fetchStatusFromDb = () => async (dispatch) => {
 };
 
 export const fetchProductsFromDb = () => async (dispatch) => {
-  const response = axios.get(url.productUrl);
+  const response = await axios.get(url.productUrl);
   dispatch(setProducts(response.data));
 };
 
 export const addProductToDb = (data) => async (dispatch) => {
-  const response = axios.post(url.productUrl, data);
+  const response = await axios.post(url.productUrl, data);
   dispatch(addProduct(response.data));
 };
 
 export const updateProductFromDb = (data) => async (dispatch) => {
-  const response = axios.put(`${url.productUrl}/${data.id}`);
+  const response = await axios.put(`${url.productUrl}/${data.id}`);
   dispatch(updateProduct(response.data));
 };
 
 export const deleteProductFromDb = (id) => async (dispatch) => {
-  const response = axios.delete(`${url.productUrl}/${id}`);
+  const response = await axios.delete(`${url.productUrl}/${id}`);
   dispatch(removeProduct(response.data));
 };

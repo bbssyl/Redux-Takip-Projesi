@@ -21,7 +21,10 @@
       "employeePassword": "",
       "employeeAddress": "Şırnak,TR",
       "employeeStatus": "Front-End Developer",
-      "employeeRating": [4, 4.5]
+      "employeeRating": [
+        4,
+        4.5
+      ]
     },
     {
       "id": "d5f33727-789d-4324-b0dc-5784ce02ae5d",
@@ -118,8 +121,8 @@
       "id": 1,
       "name": "Tamirat",
       "info": "Mekanik arıza",
-      "created_at": "23.02.2023",
-      "urgency": "Normal",
+      "created_at": "2023-03-09",
+      "urgency": "Acil",
       "isDone": true,
       "employeeId": 1
     },
@@ -127,9 +130,9 @@
       "id": 2,
       "name": "Tamirat",
       "info": "Mekanik arıza",
-      "created_at": "23.02.2023",
+      "created_at": "2023-03-02",
       "urgency": "Normal",
-      "isDone": true,
+      "isDone": false,
       "employeeId": 2
     }
   ],

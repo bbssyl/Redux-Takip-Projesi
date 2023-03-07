@@ -5,9 +5,9 @@ import ProductsContent from "./ProductsContent";
 import ProductsNavbar from "./ProductsNavbar";
 
 const Products = () => {
-  const products = useSelector((state) => state.product.products);
+  const {products} = useSelector((state) => state.product);
   const dispatch = useDispatch();
-
+  console.log(products)
   const handleProductDelete = (id) => {
     dispatch(deleteProductFromDb(id));
   };

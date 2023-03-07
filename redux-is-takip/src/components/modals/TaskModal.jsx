@@ -3,7 +3,6 @@ import { Field, Form, Formik } from "formik";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuid4 } from "uuid";
-import { addTask, updateTask } from "../../slices/tasksSlice";
 import { addTaskToDb, updateTaskFromDb } from "../api/api";
 
 export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
