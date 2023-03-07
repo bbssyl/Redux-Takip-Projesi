@@ -7,19 +7,19 @@ const EmployeesContent = ({
   handleDelete,
 }) => {
   return (
-    <div className="table w-full">
+    <div className="table w-full p-2">
       <div className="table-header-group">
         <div className="table-row">
-          <div className="table-cell font-bold">Personel ID</div>
-          <div className="table-cell font-bold">Ad Soyad</div>
-          <div className="table-cell font-bold">E-posta</div>
-          <div className="table-cell font-bold">Telefon</div>
-          <div className="table-cell font-bold">Yaş</div>
-          <div className="table-cell font-bold">Cinsiyet</div>
-          <div className="table-cell font-bold">Adres</div>
-          <div className="table-cell font-bold">Ünvan</div>
-          <div className="table-cell font-bold">Puan</div>
-          <div className="table-cell font-bold"></div>
+          <div className="table-cell font-bold pb-2">Personel ID</div>
+          <div className="table-cell font-bold pb-2">Ad Soyad</div>
+          <div className="table-cell font-bold pb-2">E-posta</div>
+          <div className="table-cell font-bold pb-2">Telefon</div>
+          <div className="table-cell font-bold pb-2">Yaş</div>
+          <div className="table-cell font-bold pb-2">Cinsiyet</div>
+          <div className="table-cell font-bold pb-2">Adres</div>
+          <div className="table-cell font-bold pb-2">Ünvan</div>
+          <div className="table-cell font-bold pb-2">Puan</div>
+          <div className="table-cell font-bold pb-2"></div>
         </div>
       </div>
       <div className="table-row-group">
@@ -41,7 +41,7 @@ const EmployeesContent = ({
               <div className="table-cell">
                 {avarageOfRating(employee.employeeRating)}
               </div>
-              <div className="table-cell">
+              <div className="table-cell p-2">
                 <button
                   className="text-sm text-yellow-700 bg-yellow-200 rounded-l-lg p-2 hover:bg-yellow-500 hover:text-yellow-50 ease-in-out duration-500"
                   onClick={() => {

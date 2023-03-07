@@ -1,16 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  deleteEmployee,
-  fetchEmployees,
-  removeEmployee,
-  resetSelectedData,
-  setSelectedData,
-} from "../../slices/employeesSlice";
 import { AiFillWarning, AiFillInfoCircle } from "react-icons/ai";
 import EmployeeModal from "./EmployeeModal";
 import EmployeesContent from "./EmployeesContent";
+import { deleteEmployeeFromDb, fetchEmployeesFromDb } from "../api/api";
+import {
+  resetSelectedData,
+  setSelectedData,
+} from "../../slices/employeesSlice";
 
 const Employees = () => {
   const employees = useSelector((state) => state.employee.employees);
@@ -36,16 +34,15 @@ const Employees = () => {
   };
 
   const handleDelete = (id) => {
-    dispatch(removeEmployee(id));
-    dispatch(deleteEmployee(id));
+    dispatch(deleteEmployeeFromDb(id));
   };
   useEffect(() => {
-    dispatch(fetchEmployees());
+    dispatch(fetchEmployeesFromDb());
   }, [dispatch]);
 
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="p-4">
       <EmployeeModal
         data={employeeDetail}
         open={open}

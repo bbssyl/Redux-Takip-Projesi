@@ -16,18 +16,18 @@ const Navbar = () => {
   };
   useEffect(() => {
     if (!user) {
-      navigate("/");
+      navigate("/login");
     }
   }, [user]);
   return (
     <nav className="p-2 w-full mb-3">
-      <div className="flex justify-between items-center bg-gradient-to-r from-blue-500 to-indigo-500 shadow-md shadow-gray-300 rounded-xl p-4 xl:flex-row max-[640px]:flex-col">
+      <div className="flex justify-between items-center bg-gradient-to-r from-blue-500 to-indigo-500 shadow-md shadow-gray-300 rounded-xl p-4 xl:flex-row xs:flex-col">
         <div className="text-blue-50 font-extrabold text-xl px-2">
           Redux İş Takip Projesi
         </div>
         <div className="flex gap-3">
           {auth.currentUser ? (
-            <div className="flex items-center gap-2 lg:flex-row max-[640px]:flex-col">
+            <div className="flex items-center gap-2 xs:flex-col">
               <span className="text-gray-100 italic font-light">
                 {auth.currentUser.email}
               </span>
@@ -41,8 +41,8 @@ const Navbar = () => {
           ) : (
             <>
               <button
-                className="rounded px-3 ease-in-out duration-500 text-blue-50 hover:bg-blue-50 hover:text-blue-700 duration-500 "
-                onClick={() => navigate("/")}
+                className="rounded px-3 ease-in-out duration-500 text-blue-50 hover:bg-blue-50 hover:text-blue-700  "
+                onClick={() => navigate("/login")}
               >
                 Giriş
               </button>

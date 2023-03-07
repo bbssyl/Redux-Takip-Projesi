@@ -16,12 +16,15 @@ const LoginView = () => {
     if (user) {
       navigate("/dashboard");
     }
-  }, [user]);
+  });
   return (
-    <div className="h-screen flex items-center justify-center">
-      <div className="flex items-center justify-center m-4 shadow-lg shadow-gray-200 rounded-lg w-1/2">
-        <div className="w-screen flex flex-row p-4">
-          <div className="w-1/2 p-4 flex flex-col justify-center  ">
+    <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center  shadow-lg shadow-gray-200 rounded-lg xl:w-1/2 lg:w-1/2 md:w-full">
+        <div className="w-screen flex xl:flex-row sm:flex-col p-4">
+          <div className="w-full">
+            <img src={loginImage} alt={loginImage} className="rounded-lg" />
+          </div>
+          <div className="xl:w-1/2 sm:w-full p-4 flex flex-col justify-center  ">
             <h4 className="text-gray-500 mb-5">Giriş yap</h4>
             <Formik
               initialValues={{ employeeEmail: "", employeePassword: "" }}
@@ -54,7 +57,7 @@ const LoginView = () => {
                   <ErrorMessage
                     name="employeeEmail"
                     component="small"
-                    className="text-danger"
+                    className="text-red-500"
                   />
                   <div className="p-2 mb-3 flex">
                     <label
@@ -74,7 +77,7 @@ const LoginView = () => {
                   <ErrorMessage
                     name="employeePassword"
                     component="small"
-                    className="text-danger"
+                    className="text-red-500"
                   />
                   <div className="flex justify-center">
                     <button
@@ -89,13 +92,6 @@ const LoginView = () => {
                 </Form>
               )}
             </Formik>
-          </div>
-          <div className="w-1/2">
-            <img
-              src={loginImage}
-              alt={loginImage}
-              className="img-fluid rounded-end h-100"
-            />
           </div>
         </div>
       </div>

@@ -8,10 +8,9 @@ import Employees from "../components/Employees/Employees";
 import EmployeeNewForm from "../components/Employees/EmployeeNewForm";
 import Products from "../components/Products/Products";
 import Tasks from "../components/Tasks/Tasks";
-
 const Router = () => {
   const routes = useRoutes([
-    { path: "/", element: <LoginView /> },
+    { path: "/login", element: <LoginView /> },
     { path: "/register", element: <RegisterView /> },
     {
       path: "/dashboard",

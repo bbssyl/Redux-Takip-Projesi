@@ -1,7 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  url: "http://localhost:5000/employees/",
   employees: [],
   employeeDetail: [],
   employeeStatus: [],
@@ -11,6 +9,9 @@ export const employeesSlice = createSlice({
   name: "employee",
   initialState,
   reducers: {
+    setEmployees: (state, action) => {
+      state.employees = action.payload;
+    },
     addEmployee: (state, action) => {
       state.employees = [...state.employees, action.payload];
     },
@@ -19,93 +20,31 @@ export const employeesSlice = createSlice({
         (employee) => employee.id !== action.payload
       );
     },
+    updateEmployee: (state, action) => {
+      const index = state.employees.findIndex(
+        (employee) => employee.id === action.payload.id
+      );
+      state.employees[index] = action.payload;
+    },
     setSelectedData: (state, action) => {
       state.employeeDetail = action.payload;
     },
-    resetSelectedData: (state, action) => {
-      state.employeeDetail = [];
+    resetSelectedData: (state) => {
+      state.employeeDetail = false;
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(fetchEmployees.fulfilled, (state, action) => {
-      state.employees = action.payload;
-    });
-    builder.addCase(postEmloyees.fulfilled, (state, action) => {
-      state.employees.push(action.payload);
-    });
-    builder.addCase(deleteEmployee.fulfilled, (state, action) => {
-      state.employees = state.employees.filter(
-        (employee) => employee.id !== action.payload
-      );
-    });
-    builder.addCase(updateEmployee.fulfilled, (state, action) => {
-      state.employees?.map((employee) => {
-        if (employee.id === action.payload.id) {
-          employee.employeeId = action.payload.employeeId;
-          employee.employeeFirstName = action.payload.employeeFirstName;
-          employee.employeeLastName = action.payload.employeeLastName;
-          employee.employeeGender = action.payload.employeeGender;
-          employee.employeeAge = action.payload.employeeAge;
-          employee.employeePhone = action.payload.employeePhone;
-          employee.employeeEmail = action.payload.employeeEmail;
-          employee.employeePassword = action.payload.employeePassword;
-          employee.employeeAddress = action.payload.employeeAddress;
-          employee.employeeStatus = action.payload.employeeStatus;
-          employee.employeeRating = action.payload.employeeRating;
-
-          return employee;
-        } else {
-          return employee;
-        }
-      });
-    });
-    builder.addCase(fetchEmployeeStatus.fulfilled, (state, action) => {
+    setEmployeeStatus: (state, action) => {
       state.employeeStatus = action.payload;
-    });
+    },
   },
 });
 
 export const {
   addEmployee,
   removeEmployee,
+  updateEmployee,
   setSelectedData,
   resetSelectedData,
+  setEmployeeStatus,
+  setEmployees,
 } = employeesSlice.actions;
 export default employeesSlice.reducer;
-
-export const fetchEmployees = createAsyncThunk(
-  "employee/fetchEmployees",
-  async () => {
-    const response = await axios.get(initialState.url);
-    return response.data;
-  }
-);
-export const postEmloyees = createAsyncThunk(
-  "employee/postEmloyee",
-  async (data) => {
-    const response = await axios.post(initialState.url, data);
-    return response.data;
-  }
-);
-export const deleteEmployee = createAsyncThunk(
-  "employee/deleteEmployee",
-  async (id) => {
-    const response = await axios.delete(initialState.url + id);
-    return response.data;
-  }
-);
-
-export const updateEmployee = createAsyncThunk(
-  "employee/updateEmployee",
-  async (data) => {
-    const response = await axios.put(initialState.url + data.id, data);
-    return response.data;
-  }
-);
-export const fetchEmployeeStatus = createAsyncThunk(
-  "employee/fetchEmployeeStatus",
-  async () => {
-    const response = await axios.get("http://localhost:5000/status");
-    return response.data;
-  }
-);

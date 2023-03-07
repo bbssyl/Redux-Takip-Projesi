@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteProduct,
-  fetchProducts,
-  removeProduct,
-} from "../../slices/productsSlice";
+import { deleteProductFromDb, fetchProductsFromDb } from "../api/api";
 import ProductsContent from "./ProductsContent";
 import ProductsNavbar from "./ProductsNavbar";
 
@@ -13,16 +9,15 @@ const Products = () => {
   const dispatch = useDispatch();
 
   const handleProductDelete = (id) => {
-    dispatch(deleteProduct(id));
-    dispatch(removeProduct(id));
+    dispatch(deleteProductFromDb(id));
   };
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProductsFromDb());
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 p-2">
       <h4 className="text-blue-400">Ürünler</h4>
       <ProductsNavbar />
       {products?.length > 0 ? (

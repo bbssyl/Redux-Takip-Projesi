@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 const MenuBar = () => {
   const navigate = useNavigate();
   return (
-    <div className="h-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-500 text-blue-100 rounded-2xl shadow-md shadow-gray-500 sm:py-2 max-[640px]:py-2">
-      <div className="flex xl:flex-col md:flex-row sm:flex-col max-[640px]:flex-col gap-2">
+    <div className="h-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-500 text-blue-100 rounded-2xl shadow-md shadow-gray-500 xs:py-2">
+      <div className="flex xl:flex-col md:flex-row xs:flex-col gap-2">
         <button
           type="button"
           className="flex items-center gap-2 hover:bg-blue-50 hover:text-blue-700 ease-in-out duration-500 p-2 rounded-lg"

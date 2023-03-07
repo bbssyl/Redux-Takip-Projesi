@@ -3,9 +3,11 @@ import Card from "./Card";
 import EmployesTopList from "../components/Employees/EmployeesTopList";
 import TasksTopList from "./Tasks/TasksTopList";
 import { useEffect } from "react";
-import { fetchEmployees } from "../slices/employeesSlice";
-import { fetchProducts } from "../slices/productsSlice";
-import { fetchTasks } from "./api/api";
+import {
+  fetchEmployeesFromDb,
+  fetchProductsFromDb,
+  fetchTasksFromDb,
+} from "./api/api";
 
 const Dashboard = () => {
   const employees = useSelector((state) => state.employee.employees);
@@ -13,9 +15,9 @@ const Dashboard = () => {
   const tasks = useSelector((state) => state.task.tasks);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchEmployees());
-    dispatch(fetchProducts());
-    dispatch(fetchTasks());
+    dispatch(fetchEmployeesFromDb());
+    dispatch(fetchProductsFromDb());
+    dispatch(fetchTasksFromDb());
   }, [dispatch]);
   return (
     <div className="px-4">

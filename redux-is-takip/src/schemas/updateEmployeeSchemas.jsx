@@ -1,9 +1,7 @@
 import * as Yup from "yup";
 
 export const updateEmployeeSchemas = Yup.object({
-  employeeId: Yup.number()
-    .positive("*Negatif bir değer giremezsiniz")
-    .required("*Bu alanın doldurulması zorunludur"),
+  employeeId: Yup.string().required("*Bu alanın doldurulması zorunludur"),
   employeeFirstName: Yup.string().required(
     "*Bu alanın doldurulması zorunludur"
   ),

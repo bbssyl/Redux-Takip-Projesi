@@ -1,4 +1,5 @@
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { motion } from "framer-motion";
 const ProductsContent = ({ products, handleProductDelete }) => {
   return (
     <>
@@ -6,7 +7,12 @@ const ProductsContent = ({ products, handleProductDelete }) => {
         {products?.map((product) => {
           return (
             <div className="w-full" key={product.id}>
-              <div className="shadow-md  p-4 h-full rounded-lg">
+              <motion.div
+                className="shadow-md  p-4 h-full rounded-lg"
+                initial={{ scale: 0 }}
+                animate={{ rotate: 360, scale: 1 }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              >
                 <div className="flex flex-col gap-2">
                   <div className="flex justify-between">
                     <span className="font-bold text-blue-400">
@@ -58,7 +64,7 @@ const ProductsContent = ({ products, handleProductDelete }) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           );
         })}

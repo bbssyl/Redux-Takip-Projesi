@@ -57,8 +57,11 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                         return (
                           <Form>
                             <div className="mb-3">
+                              <label htmlFor="" className="text-blue-400">
+                                Personel Ad
+                              </label>
                               <Field
-                                className="form-control"
+                                className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeeFirstName"
                                 type="text"
                                 value={values.employeeFirstName}
@@ -76,8 +79,11 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
+                              <label htmlFor="" className="text-blue-400">
+                                Personel Soyad
+                              </label>
                               <Field
-                                className="form-control"
+                                className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeeLastName"
                                 type="text"
                                 value={values.employeeLastName}
@@ -95,8 +101,11 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
+                              <label htmlFor="" className="text-blue-400">
+                                Cinsiyet
+                              </label>
                               <Field
-                                className="form-control"
+                                className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeeGender"
                                 type="text"
                                 value={
@@ -119,8 +128,11 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
+                              <label htmlFor="" className="text-blue-400">
+                                Doğum Tarihi
+                              </label>
                               <Field
-                                className="form-control"
+                                className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeeAge"
                                 type="number"
                                 value={values.employeeAge}
@@ -138,8 +150,11 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
+                              <label htmlFor="" className="text-blue-400">
+                                Telefon Numarası
+                              </label>
                               <Field
-                                className="form-control"
+                                className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeePhone"
                                 type="text"
                                 value={values.employeePhone}
@@ -157,8 +172,11 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
+                              <label htmlFor="" className="text-blue-400">
+                                E-posta
+                              </label>
                               <Field
-                                className="form-control"
+                                className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeeEmail"
                                 type="email"
                                 value={values.employeeEmail}
@@ -176,9 +194,12 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
+                              <label htmlFor="" className="text-blue-400">
+                                Adres
+                              </label>
                               <Field
                                 as="textarea"
-                                className="form-control"
+                                className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeeAddress"
                                 value={values.employeeAddress}
                                 onChange={(event) =>
@@ -195,8 +216,11 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
+                              <label htmlFor="" className="text-blue-400">
+                                Ünvan
+                              </label>
                               <Field
-                                className="form-control"
+                                className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeeStatus"
                                 value={values.employeeStatus}
                                 label="Çalışan"
@@ -243,166 +267,6 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
           </div>
         </Dialog>
       </Transition>
-      {/* <ModalHeader>Çalışan Sicil - {data.employeeId}</ModalHeader>
-      <ModalBody>
-        <Formik
-          initialValues={data}
-          onSubmit={(values, { setSubmitting }) => {
-            dispatch(updateEmployee(values));
-            setSubmitting(false);
-          }}
-          validationSchema={updateEmployeeSchemas}
-        >
-          {({ isSubmitting, values, setFieldValue }) => {
-            return (
-              <Form>
-                <div className="mb-3">
-                  <Field
-                    className="form-control"
-                    name="employeeFirstName"
-                    type="text"
-                    value={values.employeeFirstName}
-                    onChange={(event) =>
-                      setFieldValue("employeeFirstName", event.target.value)
-                    }
-                  />
-                  <ErrorMessage
-                    component="small"
-                    className="text-danger fs-italic"
-                    name="employeeFirstName"
-                  />
-                </div>
-                <div className="mb-3">
-                  <Field
-                    className="form-control"
-                    name="employeeLastName"
-                    type="text"
-                    value={values.employeeLastName}
-                    onChange={(event) =>
-                      setFieldValue("employeeLastName", event.target.value)
-                    }
-                  />
-                  <ErrorMessage
-                    component="small"
-                    className="text-danger fs-italic"
-                    name="employeeLastName"
-                  />
-                </div>
-                <div className="mb-3">
-                  <Field
-                    className="form-control"
-                    name="employeeGender"
-                    type="text"
-                    value={values.employeeGender === "e" ? "Erkek" : "Kadın"}
-                    onChange={(event) =>
-                      setFieldValue("employeeGender", event.target.value)
-                    }
-                    disabled
-                  />
-                  <ErrorMessage
-                    component="small"
-                    className="text-danger fs-italic"
-                    name="employeeGender"
-                  />
-                </div>
-                <div className="mb-3">
-                  <Field
-                    className="form-control"
-                    name="employeeAge"
-                    type="number"
-                    value={values.employeeAge}
-                    onChange={(event) =>
-                      setFieldValue("employeeAge", event.target.value)
-                    }
-                  />
-                  <ErrorMessage
-                    component="small"
-                    className="text-danger fs-italic"
-                    name="employeeAge"
-                  />
-                </div>
-                <div className="mb-3">
-                  <Field
-                    className="form-control"
-                    name="employeePhone"
-                    type="text"
-                    value={values.employeePhone}
-                    onChange={(event) =>
-                      setFieldValue("employeePhone", event.target.value)
-                    }
-                  />
-                  <ErrorMessage
-                    component="small"
-                    className="text-danger fs-italic"
-                    name="employeePhone"
-                  />
-                </div>
-                <div className="mb-3">
-                  <Field
-                    className="form-control"
-                    name="employeeEmail"
-                    type="email"
-                    value={values.employeeEmail}
-                    onChange={(event) =>
-                      setFieldValue("employeeEmail", event.target.value)
-                    }
-                  />
-                  <ErrorMessage
-                    component="small"
-                    className="text-danger fs-italic"
-                    name="employeeEmail"
-                  />
-                </div>
-                <div className="mb-3">
-                  <Field
-                    as="textarea"
-                    className="form-control"
-                    name="employeeAddress"
-                    value={values.employeeAddress}
-                    onChange={(event) =>
-                      setFieldValue("employeeAddress", event.target.value)
-                    }
-                  />
-                  <ErrorMessage
-                    component="small"
-                    className="text-danger fs-italic"
-                    name="employeeAddress"
-                  />
-                </div>
-                <div className="mb-3">
-                  <Field
-                    className="form-control"
-                    name="employeeStatus"
-                    value={values.employeeStatus}
-                    label="Çalışan"
-                    onChange={(event) =>
-                      setFieldValue("employeeStatus", event.target.value)
-                    }
-                  />
-                  <ErrorMessage
-                    component="small"
-                    className="text-danger fs-italic"
-                    name="employeeStatus"
-                  />
-                </div>
-                <div className="mb-3">
-                  <Button color="primary" type="submit" disabled={isSubmitting}>
-                    Güncelle
-                  </Button>
-                  <Button
-                    color="secondary"
-                    onClick={() => {
-                      handleCloseModal();
-                    }}
-                  >
-                    Vazgeç
-                  </Button>
-                </div>
-              </Form>
-            );
-          }}
-        </Formik>
-      </ModalBody> */}
     </>
   );
 };

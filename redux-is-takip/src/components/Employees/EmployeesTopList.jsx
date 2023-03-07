@@ -7,7 +7,7 @@ const EmployeesTopList = () => {
   return (
     <div className="shadow-sm shadow-gray-400 rounded-lg p-2">
       <div className="text-blue-500 p-4 ">En iyi 5 Personel</div>
-      {employees && employees.length > 0 ? (
+      {employees?.length > 0 ? (
         <div className="table w-full">
           <div className="table-header-group">
             <div className="table-row">
@@ -17,18 +17,17 @@ const EmployeesTopList = () => {
             </div>
           </div>
           <div className="table-row-group">
-            {employees &&
-              employees.map((employee) => (
-                <div className="table-row" key={employee.id}>
-                  <div className="table-cell">
-                    {employee.employeeFirstName} {employee.employeeLastName}
-                  </div>
-                  <div className="table-cell text-center">0</div>
-                  <div className="table-cell text-center">
-                    {employee.employeePhone}
-                  </div>
+            {employees?.map((employee) => (
+              <div className="table-row" key={employee.id}>
+                <div className="table-cell">
+                  {employee.employeeFirstName} {employee.employeeLastName}
                 </div>
-              ))}
+                <div className="table-cell text-center">0</div>
+                <div className="table-cell text-center">
+                  {employee.employeePhone}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       ) : (

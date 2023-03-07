@@ -1,21 +1,17 @@
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { newEmployeeSchemas } from "../../schemas/newEmployeeSchemas";
-import {
-  addEmployee,
-  fetchEmployeeStatus,
-  postEmloyees,
-} from "../../slices/employeesSlice";
 import { v4 as uuid4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { addEmployeeToDb, fetchStatusFromDb } from "../api/api";
 const EmployeeNewForm = () => {
-  const employeeStatus = useSelector((state) => state.employee.employeeStatus);
+  const { employeeStatus } = useSelector((state) => state.employee);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchEmployeeStatus());
+    dispatch(fetchStatusFromDb());
   }, [dispatch]);
   return (
     <>
@@ -38,8 +34,7 @@ const EmployeeNewForm = () => {
               employeeRating: [],
             }}
             onSubmit={(value, { setSubmitting }) => {
-              dispatch(postEmloyees(value));
-              dispatch(addEmployee(value));
+              dispatch(addEmployeeToDb(value));
               setSubmitting(false);
               navigate("/dashboard/employees");
             }}
@@ -48,13 +43,13 @@ const EmployeeNewForm = () => {
             {({ isSubmitting }) => {
               return (
                 <Form>
-                  <div className="flex flex-row flex-wrap">
-                    <div className="w-1/3">
+                  <div className="flex flex-row xs:flex-col flex-wrap">
+                    <div className="w-1/3 xs:w-full">
                       <div className="px-2">
                         <label htmlFor="employeeId">Personel ID</label>
                         <div className="mb-3">
                           <Field
-                            type="number"
+                            type="text"
                             id="employeeId"
                             name="employeeId"
                             className="w-full outline-blue-200 p-2 rounded-lg border"
@@ -68,7 +63,7 @@ const EmployeeNewForm = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-1/3">
+                    <div className="w-1/3 xs:w-full">
                       <div className="mb-3">
                         <div className="px-2">
                           <label htmlFor="employeeFirstName">Personel Ad</label>
@@ -87,7 +82,7 @@ const EmployeeNewForm = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-1/3">
+                    <div className="w-1/3 xs:w-full">
                       <div className="mb-3">
                         <div className="px-2">
                           <label htmlFor="employeeLastName">
@@ -108,7 +103,7 @@ const EmployeeNewForm = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-1/4">
+                    <div className="xl:w-1/4 xs:w-full sm:w-1/2">
                       <div className="mb-3">
                         <div className="px-2">
                           <label htmlFor="employeeGender">Cinsiyet</label>
@@ -130,7 +125,7 @@ const EmployeeNewForm = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-1/4">
+                    <div className="xl:w-1/4 xs:w-full sm:w-1/2">
                       <div className="mb-3">
                         <div className="px-2">
                           <label htmlFor="employeeAge">Yaş</label>
@@ -149,7 +144,7 @@ const EmployeeNewForm = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-1/4">
+                    <div className="xl:w-1/4 xs:w-full sm:w-1/2">
                       <div className="mb-3">
                         <div className="px-2">
                           <label htmlFor="employeePhone">
@@ -170,7 +165,7 @@ const EmployeeNewForm = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-1/4">
+                    <div className="xl:w-1/4 xs:w-full sm:w-1/2">
                       <div className="mb-3">
                         <div className="px-2">
                           <label htmlFor="employeeEmail">E-Posta</label>
@@ -201,7 +196,7 @@ const EmployeeNewForm = () => {
                             placeholder="Ünvan"
                           >
                             <option>...</option>
-                            {employeeStatus.map((employee) => {
+                            {employeeStatus?.map((employee) => {
                               return (
                                 <option key={employee.id} value={employee.name}>
                                   {employee.name}
