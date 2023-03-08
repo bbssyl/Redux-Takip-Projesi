@@ -70,7 +70,7 @@ const EmployeeNewForm = () => {
                           <ErrorMessage
                             component="small"
                             name="employeeFirstName"
-                            className="text-danger"
+                            className="text-red-700"
                           />
                         </div>
                       </div>
@@ -91,7 +91,7 @@ const EmployeeNewForm = () => {
                           <ErrorMessage
                             component="small"
                             name="employeeLastName"
-                            className="text-danger"
+                            className="text-red-700"
                           />
                         </div>
                       </div>
@@ -113,7 +113,7 @@ const EmployeeNewForm = () => {
                           <ErrorMessage
                             component="small"
                             name="employeeGender"
-                            className="text-danger"
+                            className="text-red-700"
                           />
                         </div>
                       </div>
@@ -132,7 +132,7 @@ const EmployeeNewForm = () => {
                           <ErrorMessage
                             component="small"
                             name="employeeAge"
-                            className="text-danger"
+                            className="text-red-700"
                           />
                         </div>
                       </div>
@@ -153,7 +153,7 @@ const EmployeeNewForm = () => {
                           <ErrorMessage
                             component="small"
                             name="employeePhone"
-                            className="text-danger"
+                            className="text-red-700"
                           />
                         </div>
                       </div>
@@ -172,7 +172,7 @@ const EmployeeNewForm = () => {
                           <ErrorMessage
                             component="small"
                             name="employeeEmail"
-                            className="text-danger"
+                            className="text-red-700"
                           />
                         </div>
                       </div>
@@ -200,7 +200,7 @@ const EmployeeNewForm = () => {
                           <ErrorMessage
                             component="small"
                             name="employeeStatus"
-                            className="text-danger"
+                            className="text-red-700"
                           />
                         </div>
                       </div>
@@ -219,7 +219,7 @@ const EmployeeNewForm = () => {
                           <ErrorMessage
                             component="small"
                             name="employeeAddress"
-                            className="text-danger"
+                            className="text-red-700"
                           />
                         </div>
                       </div>

@@ -72,7 +72,7 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                               <ErrorMessage
                                 component="small"
-                                className="text-danger fs-italic"
+                                className="text-red-400 fs-italic"
                                 name="employeeFirstName"
                               />
                             </div>
@@ -94,7 +94,7 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                               <ErrorMessage
                                 component="small"
-                                className="text-danger fs-italic"
+                                className="text-red-400 fs-italic"
                                 name="employeeLastName"
                               />
                             </div>
@@ -121,7 +121,7 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                               <ErrorMessage
                                 component="small"
-                                className="text-danger fs-italic"
+                                className="text-red-400 fs-italic"
                                 name="employeeGender"
                               />
                             </div>
@@ -143,7 +143,7 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                               <ErrorMessage
                                 component="small"
-                                className="text-danger fs-italic"
+                                className="text-red-400 fs-italic"
                                 name="employeeAge"
                               />
                             </div>
@@ -165,7 +165,7 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                               <ErrorMessage
                                 component="small"
-                                className="text-danger fs-italic"
+                                className="text-red-400 fs-italic"
                                 name="employeePhone"
                               />
                             </div>
@@ -187,7 +187,7 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                               <ErrorMessage
                                 component="small"
-                                className="text-danger fs-italic"
+                                className="text-red-400 fs-italic"
                                 name="employeeEmail"
                               />
                             </div>
@@ -209,7 +209,7 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                               <ErrorMessage
                                 component="small"
-                                className="text-danger fs-italic"
+                                className="text-red-400 fs-italic"
                                 name="employeeAddress"
                               />
                             </div>
@@ -231,7 +231,7 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                               <ErrorMessage
                                 component="small"
-                                className="text-danger fs-italic"
+                                className="text-red-400 fs-italic"
                                 name="employeeStatus"
                               />
                             </div>

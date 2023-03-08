@@ -81,7 +81,7 @@ const TasksContent = ({ tasks, handleTaskDelete, handleModalOpen }) => {
           <div>
             <TasksUserContent taskId={task.employeeId} />
           </div>
-          <div className="flex items-center justify-between mt-2 gap-2">
+          <div className="flex items-center justify-between mt-2 gap-2 xs:flex-col">
             <small className="text-gray-600 bg-gray-200 rounded-lg p-2 w-full italic flex flex-col items-center justify-center">
               <AiFillCalendar />
               {moment(task.created_at).format("DD.MM.YYYY")}

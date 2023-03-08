@@ -48,10 +48,10 @@ const Tasks = () => {
         data={taskDetail}
       />
       <h4 className="font-bold text-blue-400">Görevler</h4>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center xs:flex-col">
         {employees.length > 0 ? (
           <button
-            className="text-blue-600 bg-blue-200 p-2 my-2 rounded-lg   ease-in-out hover:text-blue-200 hover:bg-blue-600 duration-500"
+            className="text-blue-600 bg-blue-200 p-2 my-2 rounded-lg px-4 ease-in-out hover:text-blue-200 hover:bg-blue-600 duration-500 xs:w-full"
             onClick={handleModalOpen}
           >
             Yeni Görev
@@ -63,18 +63,15 @@ const Tasks = () => {
         )}
         {/* <button onClick={() => handleSortData("isDone")}>SIRALA</button> */}
         {tasks ? (
-          <div className="flex items-center">
-            <label
-              htmlFor="filterData"
-              className=" text-sm border rounded-l-lg p-2 bg-blue-100 text-blue-600"
-            >
+          <div className="flex items-center xs:flex-col">
+            <label htmlFor="filterData" className=" text-sm p-2 text-blue-600">
               Ara:
             </label>
             <input
               type="text"
               id="filterData"
               onChange={handleFilterData}
-              className="p-2 text-blue-400 outline-blue-400 border rounded-r-lg placeholder:italic placeholder:text-sm px-2 text-sm"
+              className="p-2 text-blue-400 outline-none border-b placeholder:italic placeholder:text-sm px-2 text-sm xs:w-full"
               placeholder="Arıza türüne göre"
             />
           </div>

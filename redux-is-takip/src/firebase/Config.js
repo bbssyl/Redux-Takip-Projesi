@@ -27,12 +27,12 @@ import { setTasks } from "../slices/tasksSlice";
 import store from "../store";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA62Zo6WbAj1NCt1qH__TD77iUrtfBvM8s",
-  authDomain: "redux-is-takip.firebaseapp.com",
-  projectId: "redux-is-takip",
-  storageBucket: "redux-is-takip.appspot.com",
-  messagingSenderId: "32657509216",
-  appId: "1:32657509216:web:f0924f8c3d2104da9e2c05",
+  apiKey: process.env.REACT_APP_FB_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_API_ID,
 };
 
 const app = initializeApp(firebaseConfig);
