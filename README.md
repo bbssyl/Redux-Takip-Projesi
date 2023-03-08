@@ -5,9 +5,9 @@
 > - [x] Personel CRUD işlemleri
 > - [x] Görev CRUD işlemleri
 > - [x] Dashboard işlemleri
+> - [x] Ürün CRUD işlemleri
 
 > ### Bekleyenler
-> - [ ] Ürün CRUD işlemleri
 > - [ ] Müşteri CRUD işlemleri
 > - [ ] Personel puanlama işlemi
 
@@ -19,5 +19,5 @@
 4. Reactstrap && Bootstrap
 5. Formik
 6. React Icons
-7. JSON Server
+7. Firebase
 8. React Router Dom
