@@ -5,9 +5,9 @@
 > - [x] Personel CRUD işlemleri
 > - [x] Görev CRUD işlemleri
 > - [x] Dashboard işlemleri
+> - [x] Ürün CRUD işlemleri
 
 > ### Bekleyenler
-> - [ ] Ürün CRUD işlemleri
 > - [ ] Müşteri CRUD işlemleri
 > - [ ] Personel puanlama işlemi
 
@@ -15,9 +15,8 @@
 
 1. React
 2. Redux Toolkit
-3. UUID
-4. Reactstrap && Bootstrap
-5. Formik
-6. React Icons
-7. JSON Server
-8. React Router Dom
+3. Tailwinds CSS
+4. Formik
+5. React Icons
+6. Firebase
+7. React Router Dom
