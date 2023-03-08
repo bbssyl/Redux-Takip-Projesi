@@ -32,7 +32,7 @@ const EmployeesTopList = () => {
         </div>
       ) : (
         <div className="text-yellow-700 bg-yellow-200 p-4 rounded-lg flex flex-row items-center gap-2">
-          <AiFillWarning size={"2rem"} />
+          <AiFillWarning size={32} />
           <span>
             Şirkette çalışan personel bulunmamaktadır. Lütfen personel sekmesine
             giderek yeni personel ekleyin

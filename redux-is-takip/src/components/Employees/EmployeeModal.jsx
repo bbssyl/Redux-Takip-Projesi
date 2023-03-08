@@ -1,12 +1,10 @@
 import React from "react";
 import { Form, Field, ErrorMessage, Formik } from "formik";
-import { useDispatch } from "react-redux";
-import { updateEmployee } from "../../slices/employeesSlice";
 import { updateEmployeeSchemas } from "../../schemas/updateEmployeeSchemas";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
+import { updateEmployeeFromFirebase } from "../../firebase/Config";
 const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
-  const dispatch = useDispatch();
   return (
     <>
       <Transition appear show={open} as={Fragment}>
@@ -46,8 +44,8 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                   <div className="mt-2">
                     <Formik
                       initialValues={data}
-                      onSubmit={(values, { setSubmitting }) => {
-                        dispatch(updateEmployee(values));
+                      onSubmit={async (values, { setSubmitting }) => {
+                        await updateEmployeeFromFirebase(values);
                         setOpen(false);
                         setSubmitting(false);
                       }}

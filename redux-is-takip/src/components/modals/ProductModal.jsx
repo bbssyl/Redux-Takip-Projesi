@@ -1,17 +1,11 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Field, Form, Formik } from "formik";
 import { Fragment } from "react";
-import { useSelector } from "react-redux";
 import {
-  addTaskToFirebase,
-  updateTaskFromFirebase,
+  addProductToFirebase,
+  updateProductFromFirebase,
 } from "../../firebase/Config";
-
-export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
-  const { employees } = useSelector((state) => state.employee);
-  const employeeData = employees?.filter(
-    (employee) => employee.employeeId === data.employeeId
-  );
+const ProductModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -44,7 +38,7 @@ export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    {data ? "Görev Detayı" : "Yeni Görev Ekle"}
+                    {data ? "Ürün Detayı" : "Yeni Ürün"}
                   </Dialog.Title>
 
                   <div className="mt-4">
@@ -52,17 +46,17 @@ export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
                       initialValues={
                         data || {
                           name: "",
+                          type: "",
+                          brand: "",
+                          model: "",
+                          price: 0,
                           info: "",
-                          created_at: "",
-                          urgency: "",
-                          isDone: false,
-                          employeeId: employees[0]?.employeeId,
                         }
                       }
                       onSubmit={async (values, { setSubmitting }) => {
                         data
-                          ? await updateTaskFromFirebase(values)
-                          : await addTaskToFirebase(values);
+                          ? await updateProductFromFirebase(values)
+                          : await addProductToFirebase(values);
                         setIsOpen(false);
                         setSubmitting(false);
                       }}
@@ -72,7 +66,7 @@ export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
                           <Form>
                             <div className="mb-3">
                               <label htmlFor="name" className=" text-blue-400">
-                                Arıza Türü
+                                Ürün Adı
                               </label>
                               <Field
                                 className="p-2 rounded-lg outline-blue-200 border w-full"
@@ -86,133 +80,88 @@ export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
-                              <label htmlFor="info" className="text-blue-400 ">
-                                Açıklama
+                              <label htmlFor="type" className="text-blue-400 ">
+                                Tür
                               </label>
                               <Field
-                                as="textarea"
                                 className="p-2 rounded-lg outline-blue-200 border w-full"
                                 type="text"
-                                id="info"
-                                name="info"
-                                value={values.info}
+                                id="type"
+                                name="type"
+                                value={values.type}
                                 onChange={(event) =>
-                                  setFieldValue("info", event.target.value)
+                                  setFieldValue("type", event.target.value)
                                 }
                               />
                             </div>
                             <div className="flex gap-2">
                               <div className="mb-3 ">
                                 <label
-                                  htmlFor="created_at"
+                                  htmlFor="brand"
                                   className="text-blue-400"
                                 >
-                                  Oluşturma tarihi
+                                  Marka
                                 </label>
                                 <Field
                                   className="p-2 rounded-lg outline-blue-200 border w-full"
-                                  type="date"
-                                  id="created_at"
-                                  name="created_at"
-                                  value={values.created_at}
+                                  type="text"
+                                  id="brand"
+                                  name="brand"
+                                  value={values.brand}
                                   onChange={(event) =>
-                                    setFieldValue(
-                                      "created_at",
-                                      event.target.value
-                                    )
+                                    setFieldValue("brand", event.target.value)
                                   }
                                 />
                               </div>
                               <div className="mb-3">
                                 <label
-                                  htmlFor="urgency"
+                                  htmlFor="model"
                                   className="text-blue-400"
                                 >
-                                  Öncelik
+                                  Model
                                 </label>
                                 <Field
-                                  as="select"
                                   className="p-2 rounded-lg bg-transparent outline-blue-200 border w-full"
                                   type="text"
-                                  id="urgency"
-                                  name="urgency"
-                                  value={values.urgency}
+                                  id="model"
+                                  name="model"
+                                  value={values.model}
                                   onChange={(event) =>
-                                    setFieldValue("urgency", event.target.value)
+                                    setFieldValue("model", event.target.value)
                                   }
-                                >
-                                  <option>...</option>
-                                  <option value="Normal">Normal</option>
-                                  <option value="Acil">Acil</option>
-                                </Field>
+                                />
                               </div>
                             </div>
                             <div className="mb-3">
-                              <label
-                                htmlFor="employeeId"
-                                className="text-blue-400"
-                              >
-                                Personel
+                              <label htmlFor="price" className="text-blue-400">
+                                Fiyat
                               </label>
                               <Field
-                                as="select"
                                 className="p-2 rounded-lg bg-transparent outline-blue-200 border w-full"
-                                type="text"
-                                id="employeeId"
-                                name="employeeId"
-                                value={values.employeeId}
+                                type="number"
+                                id="price"
+                                name="price"
+                                value={values.price}
                                 onChange={(event) =>
-                                  setFieldValue(
-                                    "employeeId",
-                                    event.target.value
-                                  )
+                                  setFieldValue("price", event.target.value)
                                 }
-                              >
-                                {data ? (
-                                  <option
-                                    value={employeeData[0]?.employeeId}
-                                    key={employeeData[0]?.id}
-                                  >
-                                    {employeeData[0]?.employeeFirstName}{" "}
-                                    {employeeData[0]?.employeeLastName}
-                                    {employeeData[0]?.employeeRating.length > 0
-                                      ? ` (Puan: ${employeeData[0]?.employeeRating})`
-                                      : null}
-                                  </option>
-                                ) : (
-                                  employees.map((employee) => {
-                                    return (
-                                      <option
-                                        value={employee.employeeId}
-                                        key={employee.id}
-                                      >
-                                        {employee.employeeFirstName}{" "}
-                                        {employee.employeeLastName}
-                                        {employee.employeeRating.length > 0
-                                          ? ` (Puan: ${employee.employeeRating})`
-                                          : null}
-                                      </option>
-                                    );
-                                  })
-                                )}
-                              </Field>
+                              />
                             </div>
                             <div className="mb-3">
-                              <label htmlFor="isDone">
-                                <Field
-                                  type="checkbox"
-                                  id="isDone"
-                                  name="isDone"
-                                  checked={values.isDone}
-                                  onChange={(event) =>
-                                    setFieldValue(
-                                      "isDone",
-                                      event.target.checked
-                                    )
-                                  }
-                                />
-                                Tamamlandı?
+                              <label htmlFor="info" className="text-blue-400">
+                                Açıklama
                               </label>
+                              <Field
+                                as="textarea"
+                                type="text"
+                                id="info"
+                                name="info"
+                                className="p-2 rounded-lg bg-transparent outline-blue-200 border w-full"
+                                value={values.info}
+                                onChange={(event) =>
+                                  setFieldValue("info", event.target.value)
+                                }
+                              />
                             </div>
                             <button
                               disabled={isSubmitting}
@@ -235,3 +184,5 @@ export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
     </>
   );
 };
+
+export default ProductModal;

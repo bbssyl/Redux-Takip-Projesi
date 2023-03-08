@@ -1,24 +1,21 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Card from "./Card";
 import EmployesTopList from "../components/Employees/EmployeesTopList";
 import TasksTopList from "./Tasks/TasksTopList";
-import { useEffect } from "react";
-import {
-  fetchEmployeesFromDb,
-  fetchProductsFromDb,
-  fetchTasksFromDb,
-} from "./api/api";
 
 const Dashboard = () => {
-  const employees = useSelector((state) => state.employee.employees);
-  const products = useSelector((state) => state.product.products);
-  const tasks = useSelector((state) => state.task.tasks);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchEmployeesFromDb());
-    dispatch(fetchProductsFromDb());
-    dispatch(fetchTasksFromDb());
-  }, [dispatch]);
+  const { employees } = useSelector((state) => state.employee);
+  const { products } = useSelector((state) => state.product);
+  const { tasks } = useSelector((state) => state.task);
+
+  const taskIsDoneCount = () => {
+    const count = tasks.reduce(
+      (total, task) => (task.isDone ? total + 1 : total),
+      0
+    );
+    return count;
+  };
+
   return (
     <div className="px-4">
       <div className="grid xl:grid-cols-4 md:grid-cols-2 md:mx-auto sm:grid-cols-1 gap-4 mb-3">
@@ -33,9 +30,12 @@ const Dashboard = () => {
         />
         <Card
           title={"Bekleyen İş"}
-          count={tasks?.length > 0 ? tasks.length : 0}
+          count={tasks?.length > 0 ? tasks.length - taskIsDoneCount() : 0}
         />
-        <Card title={"Bitirilen İş (Toplam)"} count={""} />
+        <Card
+          title={"Bitirilen İş (Toplam)"}
+          count={tasks.length > 0 ? taskIsDoneCount() : 0}
+        />
       </div>
       <div className="grid xl:grid-cols-2 md:grid-cols-1 gap-2">
         <div className="w-full rounded-lg">

@@ -1,18 +1,12 @@
 import { Field, Form, Formik, ErrorMessage } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { newEmployeeSchemas } from "../../schemas/newEmployeeSchemas";
-import { v4 as uuid4 } from "uuid";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { addEmployeeToDb, fetchStatusFromDb } from "../api/api";
+import { addEmployeeToFirebase } from "../../firebase/Config";
 const EmployeeNewForm = () => {
   const { employeeStatus } = useSelector((state) => state.employee);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(fetchStatusFromDb());
-  }, [dispatch]);
   return (
     <>
       <h4 className="text-blue-400">Yeni Personel Kayıt Formu</h4>
@@ -20,7 +14,6 @@ const EmployeeNewForm = () => {
         <div className="w-5/6 flex items-center justify-center mt-5 p-4">
           <Formik
             initialValues={{
-              id: uuid4(),
               employeeId: "",
               employeeFirstName: "",
               employeeLastName: "",
@@ -33,8 +26,8 @@ const EmployeeNewForm = () => {
               employeeStatus: "...",
               employeeRating: [],
             }}
-            onSubmit={(value, { setSubmitting }) => {
-              dispatch(addEmployeeToDb(value));
+            onSubmit={async (value, { setSubmitting }) => {
+              await addEmployeeToFirebase(value);
               setSubmitting(false);
               navigate("/dashboard/employees");
             }}

@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AiFillWarning, AiFillInfoCircle } from "react-icons/ai";
 import EmployeeModal from "./EmployeeModal";
 import EmployeesContent from "./EmployeesContent";
-import { deleteEmployeeFromDb, fetchEmployeesFromDb } from "../api/api";
 import {
   resetSelectedData,
   setSelectedData,
 } from "../../slices/employeesSlice";
+import { deleteEmployeeFromFirebase } from "../../firebase/Config";
 
 const Employees = () => {
   const employees = useSelector((state) => state.employee.employees);
@@ -16,12 +16,12 @@ const Employees = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const avarageOfRating = (rating) => {
-    const avarage = rating.reduce((total, x) => total + x, 0) / rating.length;
-    if (rating.length > 0) {
-      return avarage;
-    } else {
-      return 0;
-    }
+    // const avarage = rating.reduce((total, x) => total + x, 0) / rating.length;
+    // if (rating.length > 0) {
+    //   return avarage;
+    // } else {
+    //   return 0;
+    // }
   };
 
   const handleOpenModal = (selectedData) => {
@@ -33,12 +33,9 @@ const Employees = () => {
     setOpen(false);
   };
 
-  const handleDelete = (id) => {
-    dispatch(deleteEmployeeFromDb(id));
+  const handleDelete = async (id) => {
+    await deleteEmployeeFromFirebase(id);
   };
-  useEffect(() => {
-    dispatch(fetchEmployeesFromDb());
-  }, [dispatch]);
 
   const navigate = useNavigate();
   return (
@@ -71,11 +68,11 @@ const Employees = () => {
       ) : (
         <div className="mt-3 flex flex-col gap-2">
           <div className="text-yellow-700 bg-yellow-200 flex gap-2 items-center p-4 rounded-lg">
-            <AiFillWarning size={"2rem"} />
+            <AiFillWarning size={32} />
             Şirkette çalışan personel bulunmamaktadır.
           </div>
           <div className="text-blue-700 bg-blue-200 flex gap-2 items-center p-4 rounded-lg">
-            <AiFillInfoCircle size={"2rem"} />
+            <AiFillInfoCircle size={32} />
             Sağ üst köşede yer alan "Yeni Personel" butonu ile personel
             ekleyebilirsiniz.
           </div>

@@ -11,7 +11,7 @@ const MenuBar = () => {
           className="flex items-center gap-2 hover:bg-blue-50 hover:text-blue-700 ease-in-out duration-500 p-2 rounded-lg"
           onClick={() => navigate("/dashboard")}
         >
-          <FaHome size={"1.5rem"} />
+          <FaHome size={24} />
           Dashboard
         </button>
         <button
@@ -19,7 +19,7 @@ const MenuBar = () => {
           className="flex items-center gap-2 hover:bg-blue-50 hover:text-blue-700 ease-in-out duration-500 p-2 rounded-lg"
           onClick={() => navigate("/dashboard/employees")}
         >
-          <FaUsers size={"1.5rem"} />
+          <FaUsers size={24} />
           Personel
         </button>
         <button
@@ -27,7 +27,7 @@ const MenuBar = () => {
           className="flex items-center gap-2 hover:bg-blue-50 hover:text-blue-700 ease-in-out duration-500 p-2 rounded-lg"
           onClick={() => navigate("/dashboard/products")}
         >
-          <MdLocalGroceryStore size={"1.5rem"} />
+          <MdLocalGroceryStore size={24} />
           Ürünler
         </button>
         <button
@@ -35,7 +35,7 @@ const MenuBar = () => {
           className="flex items-center gap-2 hover:bg-blue-50 hover:text-blue-700 ease-in-out duration-500 p-2 rounded-lg"
           onClick={() => navigate("/dashboard/tasks")}
         >
-          <FaTasks size={"1.5rem"} />
+          <FaTasks size={24} />
           Görevler
         </button>
       </div>

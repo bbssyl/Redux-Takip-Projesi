@@ -1,6 +1,10 @@
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { motion } from "framer-motion";
-const ProductsContent = ({ products, handleProductDelete }) => {
+const ProductsContent = ({
+  products,
+  handleProductDelete,
+  handleModalOpen,
+}) => {
   return (
     <>
       <div className="grid gap-3 xl:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
@@ -22,7 +26,10 @@ const ProductsContent = ({ products, handleProductDelete }) => {
                       <small className="font-ligth italic text-gray-400">
                         {product.type}
                       </small>
-                      <button className="text-sm text-gray-400 hover:bg-gray-500 hover:text-gray-50 p-1 rounded-full ease-in-out duration-500">
+                      <button
+                        onClick={() => handleModalOpen(product)}
+                        className="text-sm text-gray-400 hover:bg-gray-500 hover:text-gray-50 p-1 rounded-full ease-in-out duration-500"
+                      >
                         <AiFillEdit />
                       </button>
 

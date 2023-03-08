@@ -44,7 +44,7 @@ const JobsTopList = () => {
         </div>
       ) : (
         <div className="text-blue-700 bg-blue-200 p-4 rounded-lg flex flex-row items-center gap-2">
-          <AiFillInfoCircle size={"2rem"} />
+          <AiFillInfoCircle size={32} />
           <span>
             Henüz şirket bünyesinde girilmiş bir görev bulunmamaktadır.
           </span>

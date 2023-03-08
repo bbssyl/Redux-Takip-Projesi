@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const TasksUserContent = ({ taskId }) => {
-  const employees = useSelector((state) => state.employee.employees);
+  const { employees } = useSelector((state) => state.employee);
   const data = employees?.filter((employee) => employee.employeeId === taskId);
   return (
     <>
