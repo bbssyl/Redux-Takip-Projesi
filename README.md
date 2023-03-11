@@ -6,10 +6,11 @@
 > - [x] Görev CRUD işlemleri
 > - [x] Dashboard işlemleri
 > - [x] Ürün CRUD işlemleri
-
+> - [x] Görev Puan işlemi
 > ### Bekleyenler
 > - [ ] Müşteri CRUD işlemleri
 > - [ ] Personel puanlama işlemi
+> - [ ] Görev ile alakalı harita modülü 
 
 > ### Kullanılan kütüphaneler ve bileşenler
 
