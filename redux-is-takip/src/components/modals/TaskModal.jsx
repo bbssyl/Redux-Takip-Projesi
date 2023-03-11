@@ -61,7 +61,7 @@ export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
                           employeeId: employees[0]?.employeeId,
                           employeeRate: 5,
                           address: "",
-                          auth: user.uid,
+                          userName: user.displayName,
                         }
                       }
                       onSubmit={async (values, { setSubmitting }) => {

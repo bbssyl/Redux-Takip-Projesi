@@ -50,7 +50,9 @@ export const register = async (email, password) => {
       email,
       password
     );
-    toast.success("Kayıt başarılı. Giriş yapabilirsiniz!");
+    toast.success(
+      "Kayıt başarılı. Kullanıcı ayarlar sayfasına yönlendiriliyorsunuz!"
+    );
     return user;
   } catch (error) {
     toast.error(error.message);
@@ -140,7 +142,7 @@ export const addTaskToFirebase = async (data) => {
 export const updateTaskFromFirebase = async (data) => {
   try {
     await updateDoc(doc(db, "tasks", data.id), data);
-    toast.success("Güncelleme işlemei başarılı");
+    toast.success("Güncelleme işlemi başarılı");
   } catch (error) {
     toast.error("Güncelleme işlemi başarısız oldu.");
   }

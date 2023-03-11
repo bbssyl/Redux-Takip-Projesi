@@ -2,7 +2,9 @@ import { Formik, Field, ErrorMessage, Form } from "formik";
 import { registerSchemas } from "../schemas/registerSchemas";
 import loginImage from "../images/loginImage.jpg";
 import { register } from "../firebase/Config";
+import { useNavigate } from "react-router-dom";
 const RegisterView = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex items-center justify-center">
       <div className="flex items-center justify-center shadow-lg shadow-gray-200 rounded-lg xl:w-1/2 lg:w-1/2 md:w-full">
@@ -24,6 +26,7 @@ const RegisterView = () => {
               }}
               onSubmit={async (values, { setSubmitting }) => {
                 await register(values.employeeEmail, values.employeePassword);
+                navigate("/dashboard/userSettings");
                 setSubmitting(false);
               }}
               validationSchema={registerSchemas}

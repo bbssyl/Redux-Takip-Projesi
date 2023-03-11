@@ -55,15 +55,25 @@ const TasksContent = ({ tasks, handleTaskDelete, handleModalOpen }) => {
         >
           <div className="text-blue-500 font-semibold flex justify-between">
             {task.isDone ? (
-              <small className="text-green-700 bg-green-200 rounded-lg px-2 font-light flex gap-2 items-center">
-                <AiOutlineCheckCircle />
-                Tamamlandı
-              </small>
+              <div className="flex gap-2">
+                <small className="text-green-700 bg-green-200 rounded-lg px-2 font-light flex gap-2 items-center">
+                  <AiOutlineCheckCircle />
+                  Tamamlandı
+                </small>
+                <small className="text-gray-700 bg-gray-200 rounded-lg px-2 font-light flex gap-2 items-center">
+                  Oluşturan: <span className="font-bold">{task.userName}</span>
+                </small>
+              </div>
             ) : (
-              <small className="text-yellow-700 bg-yellow-200 rounded-lg px-2 font-light flex gap-2 items-center">
-                <AiOutlineClockCircle />
-                Bekliyor
-              </small>
+              <div className="flex gap-2">
+                <small className="text-yellow-700 bg-yellow-200 rounded-lg px-2 font-light flex gap-2 items-center">
+                  <AiOutlineClockCircle />
+                  Bekliyor
+                </small>
+                <small className="text-gray-700 bg-gray-200 rounded-lg px-2 font-light flex gap-2 items-center">
+                  Oluşturan: <span className="font-bold">{task.userName}</span>
+                </small>
+              </div>
             )}
             <div>
               <button

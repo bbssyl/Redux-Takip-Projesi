@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../firebase/Config";
 import { logout as logoutHandle } from "../slices/authSlice";
 import { useEffect } from "react";
+import blankProfileImg from "../images/blankProfile.jpg";
 const Navbar = () => {
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
@@ -29,32 +30,35 @@ const Navbar = () => {
             <>
               <div className="flex items-center gap-2 xs:flex-col p-2 rounded-lg">
                 <div className="flex items-center gap-2 text-blue-50">
-                  <img
-                    src={user.photoURL}
-                    alt={user.photoURL}
-                    className="w-8 h-8 rounded-full"
-                  />
+                  {user.photoURL ? (
+                    <img
+                      src={user.photoURL}
+                      alt={user.photoURL}
+                      className="w-8 h-8 rounded-full"
+                    />
+                  ) : (
+                    <img
+                      src={blankProfileImg}
+                      alt={blankProfileImg}
+                      className="w-8 h-8 rounded-full"
+                    />
+                  )}
                   <span>{user.displayName}</span>
-                  {!user.emailVerified ? (
-                    <span
-                      class="relative flex h-3 w-3"
-                      title="E-posta adresi doğrulanmamış!"
-                    >
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                    </span>
-                  ) : null}
-
-                  {/* <div>
-                    <span className="animate-ping h-full w-full bg-red-600 rounded-full"></span>
-                    <span>{user.displayName}</span> 
-                  </div>*/}
                 </div>
                 <button
                   onClick={() => navigate("dashboard/userSettings")}
                   className="text-blue-50 px-3 p-1 flex items-center gap-1 "
                 >
                   Ayarlar
+                  {!user.emailVerified ? (
+                    <span
+                      className="relative flex h-3 w-3"
+                      title="E-posta adresi doğrulanmamış!"
+                    >
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                    </span>
+                  ) : null}
                 </button>
                 <button
                   className="text-blue-50 px-3 py-1 hover:text-red-200 hover:bg-red-600 rounded-lg ease-in-out duration-500"
