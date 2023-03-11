@@ -3,7 +3,10 @@ import { Form, Field, ErrorMessage, Formik } from "formik";
 import { updateEmployeeSchemas } from "../../schemas/updateEmployeeSchemas";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import { updateEmployeeFromFirebase } from "../../firebase/Config";
+import {
+  addEmployeeToFirebase,
+  updateEmployeeFromFirebase,
+} from "../../firebase/Config";
 const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
   return (
     <>
@@ -43,9 +46,25 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <Formik
-                      initialValues={data}
+                      initialValues={
+                        data || {
+                          employeeId: "",
+                          employeeFirstName: "",
+                          employeeLastName: "",
+                          employeeGender: "...",
+                          employeeAge: "",
+                          employeePhone: "",
+                          employeeEmail: "",
+                          employeePassword: "",
+                          employeeAddress: "",
+                          employeeStatus: "...",
+                          employeeRating: 0,
+                        }
+                      }
                       onSubmit={async (values, { setSubmitting }) => {
-                        await updateEmployeeFromFirebase(values);
+                        data
+                          ? await updateEmployeeFromFirebase(values)
+                          : await addEmployeeToFirebase(values);
                         setOpen(false);
                         setSubmitting(false);
                       }}

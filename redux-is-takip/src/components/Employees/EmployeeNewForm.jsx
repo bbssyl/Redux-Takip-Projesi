@@ -1,10 +1,8 @@
 import { Field, Form, Formik, ErrorMessage } from "formik";
-import { useSelector } from "react-redux";
 import { newEmployeeSchemas } from "../../schemas/newEmployeeSchemas";
 import { useNavigate } from "react-router-dom";
-import { addEmployeeToFirebase } from "../../firebase/Config";
+import { createNewEmployee } from "../../firebase/Admin";
 const EmployeeNewForm = () => {
-  const { employeeStatus } = useSelector((state) => state.employee);
   const navigate = useNavigate();
 
   return (
@@ -14,20 +12,16 @@ const EmployeeNewForm = () => {
         <div className="w-5/6 flex items-center justify-center mt-5 p-4">
           <Formik
             initialValues={{
-              employeeId: "",
-              employeeFirstName: "",
-              employeeLastName: "",
-              employeeGender: "...",
-              employeeAge: "",
-              employeePhone: "",
-              employeeEmail: "",
-              employeePassword: "",
-              employeeAddress: "",
-              employeeStatus: "...",
-              employeeRating: 0,
+              email: "",
+              emailVerified: false,
+              phoneNumber: "",
+              password: "",
+              displayName: "",
+              photoURL: "",
+              disabled: false,
             }}
-            onSubmit={async (value, { setSubmitting }) => {
-              await addEmployeeToFirebase(value);
+            onSubmit={async (values, { setSubmitting }) => {
+              await createNewEmployee(values);
               setSubmitting(false);
               navigate("/dashboard/employees");
             }}
@@ -38,193 +32,100 @@ const EmployeeNewForm = () => {
                 <Form>
                   <div className="flex flex-row xs:flex-col flex-wrap">
                     <div className="w-1/3 xs:w-full">
+                      <div className="mb-3">
+                        <div className="px-2">
+                          <label htmlFor="displayName">Ad Soyad</label>
+                          <Field
+                            type="text"
+                            id="displayName"
+                            name="displayName"
+                            className="w-full outline-blue-200 p-2 rounded-lg border"
+                            placeholder="Ad Soyad"
+                          />
+                          <ErrorMessage
+                            component="small"
+                            name="displayName"
+                            className="text-red-700"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-1/3 xs:w-full">
                       <div className="px-2">
-                        <label htmlFor="employeeId">Personel ID</label>
+                        <label htmlFor="password">Parola</label>
                         <div className="mb-3">
                           <Field
-                            type="text"
-                            id="employeeId"
-                            name="employeeId"
+                            type="password"
+                            id="password"
+                            name="password"
                             className="w-full outline-blue-200 p-2 rounded-lg border"
-                            placeholder="Personel ID"
+                            placeholder="Parola"
                           />
                           <ErrorMessage
                             component="small"
-                            name="employeeId"
+                            name="password"
                             className="text-red-700"
                           />
                         </div>
                       </div>
                     </div>
-                    <div className="w-1/3 xs:w-full">
+                    <div className="xl:w-1/3 xs:w-full sm:w-1/2">
                       <div className="mb-3">
                         <div className="px-2">
-                          <label htmlFor="employeeFirstName">Personel Ad</label>
-                          <Field
-                            type="text"
-                            id="employeeFirstName"
-                            name="employeeFirstName"
-                            className="w-full outline-blue-200 p-2 rounded-lg border"
-                            placeholder="Personel Ad"
-                          />
-                          <ErrorMessage
-                            component="small"
-                            name="employeeFirstName"
-                            className="text-red-700"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="w-1/3 xs:w-full">
-                      <div className="mb-3">
-                        <div className="px-2">
-                          <label htmlFor="employeeLastName">
-                            Personel Soyad
-                          </label>
-                          <Field
-                            type="text"
-                            id="employeeLastName"
-                            name="employeeLastName"
-                            className="w-full outline-blue-200 p-2 rounded-lg border"
-                            placeholder="Personel Soyad"
-                          />
-                          <ErrorMessage
-                            component="small"
-                            name="employeeLastName"
-                            className="text-red-700"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="xl:w-1/4 xs:w-full sm:w-1/2">
-                      <div className="mb-3">
-                        <div className="px-2">
-                          <label htmlFor="employeeGender">Cinsiyet</label>
-                          <Field
-                            as="select"
-                            id="employeeGender"
-                            name="employeeGender"
-                            className="w-full outline-blue-200 p-2 rounded-lg border bg-transparent"
-                          >
-                            <option>...</option>
-                            <option value="e">Erkek</option>
-                            <option value="k">Kadın</option>
-                          </Field>
-                          <ErrorMessage
-                            component="small"
-                            name="employeeGender"
-                            className="text-red-700"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="xl:w-1/4 xs:w-full sm:w-1/2">
-                      <div className="mb-3">
-                        <div className="px-2">
-                          <label htmlFor="employeeAge">Yaş</label>
-                          <Field
-                            type="number"
-                            id="employeeAge"
-                            name="employeeAge"
-                            className="w-full outline-blue-200 p-2 rounded-lg border"
-                            placeholder="Yaş"
-                          />
-                          <ErrorMessage
-                            component="small"
-                            name="employeeAge"
-                            className="text-red-700"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="xl:w-1/4 xs:w-full sm:w-1/2">
-                      <div className="mb-3">
-                        <div className="px-2">
-                          <label htmlFor="employeePhone">
-                            Telefon Numarası
-                          </label>
-                          <Field
-                            type="text"
-                            id="employeePhone"
-                            name="employeePhone"
-                            className="w-full outline-blue-200 p-2 rounded-lg border"
-                            placeholder="Telefon Numarası"
-                          />
-                          <ErrorMessage
-                            component="small"
-                            name="employeePhone"
-                            className="text-red-700"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="xl:w-1/4 xs:w-full sm:w-1/2">
-                      <div className="mb-3">
-                        <div className="px-2">
-                          <label htmlFor="employeeEmail">E-Posta</label>
+                          <label htmlFor="email">E-Posta</label>
                           <Field
                             type="email"
-                            id="employeeEmail"
-                            name="employeeEmail"
+                            id="email"
+                            name="email"
                             className="w-full outline-blue-200 p-2 rounded-lg border"
                             placeholder="E-Posta"
                           />
                           <ErrorMessage
                             component="small"
-                            name="employeeEmail"
+                            name="email"
                             className="text-red-700"
                           />
                         </div>
                       </div>
                     </div>
-                    <div className="w-full">
+                    <div className="xl:w-1/4 xs:w-full sm:w-1/2">
                       <div className="mb-3">
                         <div className="px-2">
-                          <label htmlFor="employeeStatus">Ünvan</label>
+                          <label htmlFor="phoneNumber">Telefon Numarası</label>
                           <Field
-                            as="select"
-                            id="employeeStatus"
-                            name="employeeStatus"
-                            className="w-full outline-blue-200 p-2 rounded-lg border bg-transparent"
-                            placeholder="Ünvan"
-                          >
-                            <option>...</option>
-                            {employeeStatus?.map((employee) => {
-                              return (
-                                <option key={employee.id} value={employee.name}>
-                                  {employee.name}
-                                </option>
-                              );
-                            })}
-                          </Field>
-                          <ErrorMessage
-                            component="small"
-                            name="employeeStatus"
-                            className="text-red-700"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="w-full">
-                      <div className="mb-3">
-                        <div className="px-2">
-                          <label htmlFor="employeeAddress">Adres</label>
-                          <Field
-                            as="textarea"
-                            id="employeeAddress"
-                            name="employeeAddress"
+                            type="text"
+                            id="phoneNumber"
+                            name="phoneNumber"
                             className="w-full outline-blue-200 p-2 rounded-lg border"
-                            placeholder="Adres"
+                            placeholder="Telefon Numarası"
                           />
                           <ErrorMessage
                             component="small"
-                            name="employeeAddress"
+                            name="phoneNumber"
                             className="text-red-700"
                           />
                         </div>
                       </div>
                     </div>
-
+                    <div className="xl:w-1/4 xs:w-full sm:w-1/2">
+                      <div className="mb-3">
+                        <div className="px-2">
+                          <label htmlFor="photoURL">PhotoURL</label>
+                          <Field
+                            type="text"
+                            id="photoURL"
+                            name="photoURL"
+                            className="w-full outline-blue-200 p-2 rounded-lg border"
+                            placeholder="url..."
+                          />
+                          <ErrorMessage
+                            component="small"
+                            name="photoURL"
+                            className="text-red-700"
+                          />
+                        </div>
+                      </div>
+                    </div>
                     <div className="flex mx-auto gap-2 justify-center">
                       <button
                         type="submit"
