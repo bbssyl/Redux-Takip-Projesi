@@ -75,7 +75,9 @@ const Tasks = () => {
               placeholder="Arıza türüne göre"
             />
           </div>
-        ) : null}
+        ) : (
+          <div></div>
+        )}
       </div>
       {tasks?.length > 0 ? (
         <TasksContent

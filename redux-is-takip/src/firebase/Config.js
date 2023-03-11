@@ -5,6 +5,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  sendEmailVerification,
+  updateProfile,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import {
@@ -152,9 +155,53 @@ export const deleteTaskFromFirebase = async (id) => {
   }
 };
 
+export const emailVerification = async () => {
+  try {
+    await sendEmailVerification(auth.currentUser);
+    toast.success(
+      `Doğrulama maili ${auth.currentUser.email} adresine gönderildi.`
+    );
+  } catch (error) {
+    toast.error("Doğrulama maili gönderilemedi");
+  }
+};
+
+export const updateUserInfo = async (displayName, photoURL) => {
+  try {
+    await updateProfile(auth.currentUser, {
+      displayName: displayName,
+      photoURL: photoURL,
+    });
+    toast.success("Kullanıcı bilgileri güncellendi");
+  } catch (error) {
+    toast.error(
+      "Güncelleme sırasında hata ile karşılaşıldı. Lütfen daha sonra tekrar deneyin."
+    );
+  }
+};
+
+export const resetUserPassword = async () => {
+  try {
+    await sendPasswordResetEmail(auth, auth.currentUser.email);
+    toast.success(
+      `${auth.currentUser.email} e-posta adresine sıfırlama linki gönderildi.`
+    );
+  } catch (error) {
+    toast.error("Kullanıcı parola resetleme gönderilemedi");
+  }
+};
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    store.dispatch(loginHandle(user.accessToken));
+    const userData = {
+      email: user.email,
+      emailVerified: user.emailVerified,
+      photoURL: user.photoURL ? user.photoURL : "",
+      phoneNumber: user.phoneNumber ? user.phoneNumber : "",
+      displayName: user.displayName ? user.displayName : "",
+      uid: user.uid,
+    };
+    store.dispatch(loginHandle(userData));
     onSnapshot(collection(db, "tasks"), (doc) => {
       store.dispatch(
         setTasks(

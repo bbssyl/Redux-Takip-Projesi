@@ -8,6 +8,8 @@ import Employees from "../components/Employees/Employees";
 import EmployeeNewForm from "../components/Employees/EmployeeNewForm";
 import Products from "../components/Products/Products";
 import Tasks from "../components/Tasks/Tasks";
+import UserSettings from "../components/UserSettings";
+
 const Router = () => {
   const routes = useRoutes([
     { path: "/login", element: <LoginView /> },
@@ -20,6 +22,7 @@ const Router = () => {
           index: true,
           element: <Dashboard />,
         },
+        { path: "userSettings", element: <UserSettings /> },
         {
           path: "employees",
           element: <Employees />,

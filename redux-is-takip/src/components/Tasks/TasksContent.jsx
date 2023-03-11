@@ -9,7 +9,9 @@ import TasksUserContent from "./TasksUserContent";
 import moment from "moment";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-
+import { AiOutlineClockCircle, AiOutlineCheckCircle } from "react-icons/ai";
+import { MdLocationPin } from "react-icons/md";
+import { FaStar } from "react-icons/fa";
 const TasksContent = ({ tasks, handleTaskDelete, handleModalOpen }) => {
   const container = {
     hidden: { opacity: 1, scale: 0 },
@@ -47,17 +49,19 @@ const TasksContent = ({ tasks, handleTaskDelete, handleModalOpen }) => {
     >
       {filterData?.map((task) => (
         <motion.div
-          className="p-4 flex flex-col justify-between shadow-md m-2 bg-white rounded-xl"
+          className="p-4 flex flex-col justify-between shadow-md m-2 bg-white rounded-xl gap-2"
           variants={item}
           key={task.id}
         >
           <div className="text-blue-500 font-semibold flex justify-between">
             {task.isDone ? (
-              <small className="text-green-700 bg-green-200 rounded-lg px-1 font-light">
+              <small className="text-green-700 bg-green-200 rounded-lg px-2 font-light flex gap-2 items-center">
+                <AiOutlineCheckCircle />
                 Tamamlandı
               </small>
             ) : (
-              <small className="text-yellow-700 bg-yellow-200 rounded-lg px-1 font-light">
+              <small className="text-yellow-700 bg-yellow-200 rounded-lg px-2 font-light flex gap-2 items-center">
+                <AiOutlineClockCircle />
                 Bekliyor
               </small>
             )}
@@ -77,9 +81,34 @@ const TasksContent = ({ tasks, handleTaskDelete, handleModalOpen }) => {
               </button>
             </div>
           </div>
-          <p className="text-blue-500">{task.info}</p>
-          <div>
-            <TasksUserContent taskId={task.employeeId} />
+          <div className="flex gap-2 items-center justify-between">
+            <div>
+              <p className="text-blue-500">{task.info}</p>
+              <small className="flex gap-1 items-center">
+                <MdLocationPin className="text-red-600" size={20} />
+                {task.address ? task.address : "Adres belirtilmemiş"}
+              </small>
+              <div>
+                <TasksUserContent taskId={task.employeeId} />
+              </div>
+            </div>
+            <div>
+              {task.employeeRate?.length > 0 ? (
+                <>
+                  <small className="text-indigo-600 p-6 w-full italic flex flex-col items-center justify-center rounded-full ">
+                    <FaStar className="text-yellow-400" size={16} />
+                    {task.employeeRate} yıldız
+                  </small>
+                </>
+              ) : (
+                <>
+                  <small className="text-indigo-600 p-2 w-full italic flex flex-col items-center justify-center">
+                    <FaStar className="text-gray-400" size={16} />
+                    Değerlendirme yok
+                  </small>
+                </>
+              )}
+            </div>
           </div>
           <div className="flex items-center justify-between mt-2 gap-2 xs:flex-col">
             <small className="text-gray-600 bg-gray-200 rounded-lg p-2 w-full italic flex flex-col items-center justify-center">

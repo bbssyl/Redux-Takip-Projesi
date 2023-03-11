@@ -12,6 +12,8 @@ export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
   const employeeData = employees?.filter(
     (employee) => employee.employeeId === data.employeeId
   );
+  const { user } = useSelector((state) => state.auth);
+  const rates = [5, 4, 3, 2, 1];
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -57,6 +59,9 @@ export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
                           urgency: "",
                           isDone: false,
                           employeeId: employees[0]?.employeeId,
+                          employeeRate: 5,
+                          address: "",
+                          auth: user.uid,
                         }
                       }
                       onSubmit={async (values, { setSubmitting }) => {
@@ -198,6 +203,25 @@ export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
                               </Field>
                             </div>
                             <div className="mb-3">
+                              <label
+                                htmlFor="address"
+                                className="text-blue-400 "
+                              >
+                                Adres
+                              </label>
+                              <Field
+                                as="textarea"
+                                className="p-2 rounded-lg outline-blue-200 border w-full"
+                                type="text"
+                                id="address"
+                                name="address"
+                                value={values.address}
+                                onChange={(event) =>
+                                  setFieldValue("address", event.target.value)
+                                }
+                              />
+                            </div>
+                            <div className="mb-3">
                               <label htmlFor="isDone">
                                 <Field
                                   type="checkbox"
@@ -214,6 +238,34 @@ export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
                                 Tamamlandı?
                               </label>
                             </div>
+                            {values.isDone ? (
+                              <div className="mb-3">
+                                <label htmlFor="employeeRate">
+                                  Personel Değerlendirmesi:{" "}
+                                </label>
+                                <Field
+                                  as="select"
+                                  id="employeeRate"
+                                  name="employeeRate"
+                                  className="p-2 w-24 text-center rounded-lg"
+                                  value={values.employeeRate}
+                                  onChange={(event) =>
+                                    setFieldValue(
+                                      "employeeRate",
+                                      event.target.value
+                                    )
+                                  }
+                                >
+                                  {rates.map((rate) => {
+                                    return (
+                                      <option key={rate} value={rate}>
+                                        {rate}
+                                      </option>
+                                    );
+                                  })}
+                                </Field>
+                              </div>
+                            ) : null}
                             <button
                               disabled={isSubmitting}
                               type="submit"

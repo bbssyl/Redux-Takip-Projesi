@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { AiFillInfoCircle } from "react-icons/ai";
+import moment from "moment";
 
 const JobsTopList = () => {
   const { tasks } = useSelector((state) => state.task);
@@ -23,10 +24,10 @@ const JobsTopList = () => {
               return (
                 <div className="table-row" key={task.id}>
                   <div className="table-cell" title={task.name}>
-                    {task.info}
+                    {task.name}
                   </div>
                   <div className="table-cell text-center">
-                    {task.created_at}
+                    {moment(task.created_at).format("DD.MM.YYYY")}
                   </div>
                   {task.urgency === "Normal" ? (
                     <div className="table-cell text-center text-green-700">

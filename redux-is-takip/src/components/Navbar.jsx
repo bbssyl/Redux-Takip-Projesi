@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../firebase/Config";
 import { logout as logoutHandle } from "../slices/authSlice";
-import { auth } from "../firebase/Config";
 import { useEffect } from "react";
 const Navbar = () => {
   const { user } = useSelector((state) => state.auth);
@@ -26,18 +25,45 @@ const Navbar = () => {
           Redux İş Takip Projesi
         </div>
         <div className="flex gap-3">
-          {auth.currentUser ? (
-            <div className="flex items-center gap-2 xs:flex-col">
-              <span className="text-gray-100 italic font-light">
-                {auth.currentUser.email}
-              </span>
-              <button
-                className="text-blue-700 bg-blue-200 px-3 py-1 rounded-xl hover:text-red-200 hover:bg-red-600 ease-in-out duration-500"
-                onClick={handleLogout}
-              >
-                Çıkış
-              </button>
-            </div>
+          {user ? (
+            <>
+              <div className="flex items-center gap-2 xs:flex-col p-2 rounded-lg">
+                <div className="flex items-center gap-2 text-blue-50">
+                  <img
+                    src={user.photoURL}
+                    alt={user.photoURL}
+                    className="w-8 h-8 rounded-full"
+                  />
+                  <span>{user.displayName}</span>
+                  {!user.emailVerified ? (
+                    <span
+                      class="relative flex h-3 w-3"
+                      title="E-posta adresi doğrulanmamış!"
+                    >
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                    </span>
+                  ) : null}
+
+                  {/* <div>
+                    <span className="animate-ping h-full w-full bg-red-600 rounded-full"></span>
+                    <span>{user.displayName}</span> 
+                  </div>*/}
+                </div>
+                <button
+                  onClick={() => navigate("dashboard/userSettings")}
+                  className="text-blue-50 px-3 p-1 flex items-center gap-1 "
+                >
+                  Ayarlar
+                </button>
+                <button
+                  className="text-blue-50 px-3 py-1 hover:text-red-200 hover:bg-red-600 rounded-lg ease-in-out duration-500"
+                  onClick={handleLogout}
+                >
+                  Çıkış
+                </button>
+              </div>
+            </>
           ) : (
             <>
               <button

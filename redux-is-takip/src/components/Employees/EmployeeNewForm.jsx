@@ -24,7 +24,7 @@ const EmployeeNewForm = () => {
               employeePassword: "",
               employeeAddress: "",
               employeeStatus: "...",
-              employeeRating: [],
+              employeeRating: 0,
             }}
             onSubmit={async (value, { setSubmitting }) => {
               await addEmployeeToFirebase(value);

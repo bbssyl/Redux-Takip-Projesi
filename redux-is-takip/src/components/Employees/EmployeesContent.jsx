@@ -1,11 +1,6 @@
 import React from "react";
 
-const EmployeesContent = ({
-  employees,
-  avarageOfRating,
-  handleOpenModal,
-  handleDelete,
-}) => {
+const EmployeesContent = ({ employees, handleOpenModal, handleDelete }) => {
   return (
     <div className="table w-full p-2">
       <div className="table-header-group">
@@ -38,9 +33,7 @@ const EmployeesContent = ({
               </div>
               <div className="table-cell">{employee.employeeAddress}</div>
               <div className="table-cell">{employee.employeeStatus}</div>
-              <div className="table-cell">
-                {avarageOfRating(employee.employeeRating)}
-              </div>
+              <div className="table-cell">{employee.employeeRating}</div>
               <div className="table-cell p-2">
                 <button
                   className="text-sm text-yellow-700 bg-yellow-200 rounded-l-lg p-2 hover:bg-yellow-500 hover:text-yellow-50 ease-in-out duration-500"

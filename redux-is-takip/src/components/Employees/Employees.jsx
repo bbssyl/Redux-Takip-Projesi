@@ -15,14 +15,6 @@ const Employees = () => {
   const employeeDetail = useSelector((state) => state.employee.employeeDetail);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
-  const avarageOfRating = (rating) => {
-    // const avarage = rating.reduce((total, x) => total + x, 0) / rating.length;
-    // if (rating.length > 0) {
-    //   return avarage;
-    // } else {
-    //   return 0;
-    // }
-  };
 
   const handleOpenModal = (selectedData) => {
     dispatch(setSelectedData(selectedData));
@@ -61,7 +53,6 @@ const Employees = () => {
       {employees?.length > 0 ? (
         <EmployeesContent
           employees={employees}
-          avarageOfRating={avarageOfRating}
           handleOpenModal={handleOpenModal}
           handleDelete={handleDelete}
         />
