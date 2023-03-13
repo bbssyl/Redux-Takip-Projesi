@@ -8,8 +8,10 @@ import {
 } from "react-icons/ai";
 
 const EmployeesContent = ({ employees, handleOpenModal, handleDelete }) => {
+  const taskEmployee = employees.filter((employee) => employee);
+
   return (
-    <div className="grid grid-cols-4 p-2">
+    <div className="grid grid-cols-4 p-2 gap-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1">
       {employees?.map((employee) => {
         return (
           <div className="p-4 rounded-lg shadow-md" key={employee.id}>

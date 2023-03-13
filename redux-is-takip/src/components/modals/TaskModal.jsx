@@ -10,7 +10,7 @@ import {
 export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
   const { employees } = useSelector((state) => state.employee);
   const employeeData = employees?.filter(
-    (employee) => employee.employeeId === data.employeeId
+    (employee) => employee.id === data.employeeId
   );
   const { user } = useSelector((state) => state.auth);
   const rates = [5, 4, 3, 2, 1];
@@ -58,7 +58,7 @@ export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
                           created_at: "",
                           urgency: "",
                           isDone: false,
-                          employeeId: employees[0]?.employeeId,
+                          employeeId: employees[0]?.id,
                           employeeRate: 5,
                           address: "",
                           userName: user.displayName,
@@ -173,33 +173,18 @@ export const TaskModal = ({ isOpen, handleModalClose, data, setIsOpen }) => {
                                   )
                                 }
                               >
-                                {data ? (
+                                {employees.map((employee) => (
                                   <option
-                                    value={employeeData[0]?.employeeId}
-                                    key={employeeData[0]?.id}
+                                    value={employee?.id}
+                                    key={employee?.id}
                                   >
-                                    {employeeData[0]?.employeeFirstName}{" "}
-                                    {employeeData[0]?.employeeLastName}
-                                    {employeeData[0]?.employeeRating.length > 0
-                                      ? ` (Puan: ${employeeData[0]?.employeeRating})`
+                                    {employee?.employeeFirstName}{" "}
+                                    {employee?.employeeLastName}
+                                    {employee?.employeeRating.length > 0
+                                      ? ` (Puan: ${employee?.employeeRating})`
                                       : null}
                                   </option>
-                                ) : (
-                                  employees.map((employee) => {
-                                    return (
-                                      <option
-                                        value={employee.employeeId}
-                                        key={employee.id}
-                                      >
-                                        {employee.employeeFirstName}{" "}
-                                        {employee.employeeLastName}
-                                        {employee.employeeRating.length > 0
-                                          ? ` (Puan: ${employee.employeeRating})`
-                                          : null}
-                                      </option>
-                                    );
-                                  })
-                                )}
+                                ))}
                               </Field>
                             </div>
                             <div className="mb-3">

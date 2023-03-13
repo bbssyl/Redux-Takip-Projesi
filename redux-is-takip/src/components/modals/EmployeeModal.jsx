@@ -48,14 +48,11 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                     <Formik
                       initialValues={
                         data || {
-                          employeeId: "",
                           employeeFirstName: "",
                           employeeLastName: "",
-                          employeeGender: "...",
                           employeeAge: "",
                           employeePhone: "",
                           employeeEmail: "",
-                          employeePassword: "",
                           employeeAddress: "",
                           employeeStatus: "...",
                           employeeRating: 0,
@@ -70,16 +67,20 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                       }}
                       validationSchema={updateEmployeeSchemas}
                     >
-                      {({ isSubmitting, values, setFieldValue }) => {
+                      {({ values, isSubmitting, setFieldValue }) => {
                         return (
                           <Form>
                             <div className="mb-3">
-                              <label htmlFor="" className="text-blue-400">
+                              <label
+                                htmlFor="employeeFirstName"
+                                className="text-blue-400"
+                              >
                                 Personel Ad
                               </label>
                               <Field
                                 className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeeFirstName"
+                                id="employeeFirstName"
                                 type="text"
                                 value={values.employeeFirstName}
                                 onChange={(event) =>
@@ -96,12 +97,16 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
-                              <label htmlFor="" className="text-blue-400">
+                              <label
+                                htmlFor="employeeLastName"
+                                className="text-blue-400"
+                              >
                                 Personel Soyad
                               </label>
                               <Field
                                 className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeeLastName"
+                                id="employeeLastName"
                                 type="text"
                                 value={values.employeeLastName}
                                 onChange={(event) =>
@@ -118,12 +123,16 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
-                              <label htmlFor="" className="text-blue-400">
+                              <label
+                                htmlFor="employeeAge"
+                                className="text-blue-400"
+                              >
                                 Doğum Tarihi
                               </label>
                               <Field
                                 className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeeAge"
+                                id="employeeAge"
                                 type="date"
                                 value={values.employeeAge}
                                 onChange={(event) =>
@@ -140,12 +149,16 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
-                              <label htmlFor="" className="text-blue-400">
+                              <label
+                                htmlFor="employeePhone"
+                                className="text-blue-400"
+                              >
                                 Telefon Numarası
                               </label>
                               <Field
                                 className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeePhone"
+                                id="employeePhone"
                                 type="text"
                                 value={values.employeePhone}
                                 onChange={(event) =>
@@ -162,12 +175,16 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
-                              <label htmlFor="" className="text-blue-400">
+                              <label
+                                htmlFor="employeeEmail"
+                                className="text-blue-400"
+                              >
                                 E-posta
                               </label>
                               <Field
                                 className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeeEmail"
+                                id="employeeEmail"
                                 type="email"
                                 value={values.employeeEmail}
                                 onChange={(event) =>
@@ -184,13 +201,17 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
-                              <label htmlFor="" className="text-blue-400">
+                              <label
+                                htmlFor="employeeAddress"
+                                className="text-blue-400"
+                              >
                                 Adres
                               </label>
                               <Field
                                 as="textarea"
                                 className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeeAddress"
+                                id="employeeAddress"
                                 value={values.employeeAddress}
                                 onChange={(event) =>
                                   setFieldValue(
@@ -206,13 +227,17 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                               />
                             </div>
                             <div className="mb-3">
-                              <label htmlFor="" className="text-blue-400">
+                              <label
+                                htmlFor="employeeStatus"
+                                className="text-blue-400"
+                              >
                                 Ünvan
                               </label>
                               <Field
                                 as="select"
                                 className="p-2 border outline-blue-300 rounded w-full bg-transparent"
                                 name="employeeStatus"
+                                id="employeeStatus"
                                 value={values.employeeStatus}
                                 label="Çalışan"
                                 onChange={(event) =>
@@ -222,7 +247,7 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                                   )
                                 }
                               >
-                                {employeeStatus.map((status) => {
+                                {employeeStatus?.map((status) => {
                                   return (
                                     <option key={status.id} value={status.name}>
                                       {status.name}

@@ -43,15 +43,9 @@ const Employees = () => {
       <div className="border-b p-3 flex flex-row justify-between items-center gap-2">
         <h4 className="text-blue-400">Personel Listesi</h4>
         <div>
-          {/* <button
-            className="text-blue-700 bg-blue-200 rounded-lg p-2 px-4 hover:bg-blue-600 hover:text-blue-50 ease-in-out duration-500"
-            onClick={() => navigate("/dashboard/newEmployee")}
-          >
-            New Employee
-          </button> */}
           <button
             className="text-blue-600 bg-blue-200 p-2 my-2 rounded-lg px-4 ease-in-out hover:text-blue-200 hover:bg-blue-600 duration-500 xs:w-full"
-            onClick={handleOpenModal}
+            onClick={() => navigate("/dashboard/newEmployee")}
           >
             Yeni Personel
           </button>

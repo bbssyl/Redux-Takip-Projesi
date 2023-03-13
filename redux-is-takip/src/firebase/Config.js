@@ -204,7 +204,11 @@ onAuthStateChanged(auth, (user) => {
       uid: user.uid,
     };
     store.dispatch(loginHandle(userData));
+
     onSnapshot(collection(db, "tasks"), (doc) => {
+      // doc.docs.map((d) => {
+      //   return console.log(d.data().employeeId);
+      // });
       store.dispatch(
         setTasks(
           doc.docs.reduce(

@@ -1,7 +1,6 @@
 import * as Yup from "yup";
 
 export const newEmployeeSchemas = Yup.object({
-  employeeId: Yup.string().required("*Bu alanın doldurulması zorunludur"),
   employeeFirstName: Yup.string().required(
     "*Bu alanın doldurulması zorunludur"
   ),
@@ -15,5 +14,5 @@ export const newEmployeeSchemas = Yup.object({
     .email("*Geçerli bir mail adresi girin")
     .required("*Bu alanın doldurulması zorunludur"),
   employeeAddress: Yup.string().required("*Bu alanın doldurulması zorunludur"),
-  employeeStatus: Yup.string().required("*Bu alanın doldurulması zorunludur"),
+  employeeStatus: Yup.mixed().required("*Bu alanın doldurulması zorunludur"),
 });

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const TasksUserContent = ({ taskId }) => {
   const { employees } = useSelector((state) => state.employee);
-  const data = employees?.filter((employee) => employee.employeeId === taskId);
+  const data = employees?.filter((employee) => employee.id === taskId);
   return (
     <div className="flex flex-col gap-2">
       <div>

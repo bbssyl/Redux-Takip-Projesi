@@ -1,7 +1,6 @@
 import * as Yup from "yup";
 
 export const updateEmployeeSchemas = Yup.object({
-  employeeId: Yup.string().required("*Bu alanın doldurulması zorunludur"),
   employeeFirstName: Yup.string().required(
     "*Bu alanın doldurulması zorunludur"
   ),
