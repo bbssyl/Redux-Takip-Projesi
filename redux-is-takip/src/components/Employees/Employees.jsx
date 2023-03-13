@@ -11,13 +11,14 @@ import {
 import { deleteEmployeeFromFirebase } from "../../firebase/Config";
 
 const Employees = () => {
-  const employees = useSelector((state) => state.employee.employees);
-  const employeeDetail = useSelector((state) => state.employee.employeeDetail);
+  const { employees, employeeDetail } = useSelector((state) => state.employee);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   const handleOpenModal = (selectedData) => {
-    dispatch(setSelectedData(selectedData));
+    if (selectedData.id) {
+      dispatch(setSelectedData(selectedData));
+    }
     setOpen(true);
   };
   const handleCloseModal = () => {

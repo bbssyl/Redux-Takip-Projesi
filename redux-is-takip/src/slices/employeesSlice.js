@@ -30,7 +30,7 @@ export const employeesSlice = createSlice({
       state.employeeDetail = action.payload;
     },
     resetSelectedData: (state) => {
-      state.employeeDetail = false;
+      state.employeeDetail = [];
     },
     setEmployeeStatus: (state, action) => {
       state.employeeStatus = action.payload;

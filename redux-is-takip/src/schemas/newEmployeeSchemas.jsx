@@ -6,12 +6,7 @@ export const newEmployeeSchemas = Yup.object({
     "*Bu alanın doldurulması zorunludur"
   ),
   employeeLastName: Yup.string().required("*Bu alanın doldurulması zorunludur"),
-  employeeGender: Yup.mixed()
-    .oneOf(["e", "k"], "Geçerli bir cinsiyet seçiniz")
-    .required("*Bu alanın doldurulması zorunludur"),
-  employeeAge: Yup.number()
-    .positive("* 0(Sıfır)'dan büyük bir değer girin")
-    .required("*Bu alanın doldurulması zorunludur"),
+  employeeAge: Yup.date().required("*Bu alanın doldurulması zorunludur"),
   employeePhone: Yup.number()
     .positive("*Negatif bir değer giremezsiniz")
     .typeError("*Geçerli bir telefon numarası girin")

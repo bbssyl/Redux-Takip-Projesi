@@ -7,7 +7,9 @@ import {
   addEmployeeToFirebase,
   updateEmployeeFromFirebase,
 } from "../../firebase/Config";
+import { useSelector } from "react-redux";
 const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
+  const { employeeStatus } = useSelector((state) => state.employee);
   return (
     <>
       <Transition appear show={open} as={Fragment}>
@@ -40,9 +42,7 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    <p className="text-blue-400">
-                      {data.employeeId} sicil numaralı personel
-                    </p>
+                    <p className="text-blue-400">Personel Formu</p>
                   </Dialog.Title>
                   <div className="mt-2">
                     <Formik
@@ -119,39 +119,12 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                             </div>
                             <div className="mb-3">
                               <label htmlFor="" className="text-blue-400">
-                                Cinsiyet
-                              </label>
-                              <Field
-                                className="p-2 border outline-blue-300 rounded w-full"
-                                name="employeeGender"
-                                type="text"
-                                value={
-                                  values.employeeGender === "e"
-                                    ? "Erkek"
-                                    : "Kadın"
-                                }
-                                onChange={(event) =>
-                                  setFieldValue(
-                                    "employeeGender",
-                                    event.target.value
-                                  )
-                                }
-                                disabled
-                              />
-                              <ErrorMessage
-                                component="small"
-                                className="text-red-400 fs-italic"
-                                name="employeeGender"
-                              />
-                            </div>
-                            <div className="mb-3">
-                              <label htmlFor="" className="text-blue-400">
                                 Doğum Tarihi
                               </label>
                               <Field
                                 className="p-2 border outline-blue-300 rounded w-full"
                                 name="employeeAge"
-                                type="number"
+                                type="date"
                                 value={values.employeeAge}
                                 onChange={(event) =>
                                   setFieldValue(
@@ -237,7 +210,8 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                                 Ünvan
                               </label>
                               <Field
-                                className="p-2 border outline-blue-300 rounded w-full"
+                                as="select"
+                                className="p-2 border outline-blue-300 rounded w-full bg-transparent"
                                 name="employeeStatus"
                                 value={values.employeeStatus}
                                 label="Çalışan"
@@ -247,7 +221,15 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                                     event.target.value
                                   )
                                 }
-                              />
+                              >
+                                {employeeStatus.map((status) => {
+                                  return (
+                                    <option key={status.id} value={status.name}>
+                                      {status.name}
+                                    </option>
+                                  );
+                                })}
+                              </Field>
                               <ErrorMessage
                                 component="small"
                                 className="text-red-400 fs-italic"

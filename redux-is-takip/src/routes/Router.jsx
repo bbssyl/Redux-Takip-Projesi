@@ -5,7 +5,6 @@ import HomeView from "../views/HomeView";
 import PageNotFound from "../views/PageNotFound";
 import Dashboard from "../components/Dashboard";
 import Employees from "../components/Employees/Employees";
-import EmployeeNewForm from "../components/Employees/EmployeeNewForm";
 import Products from "../components/Products/Products";
 import Tasks from "../components/Tasks/Tasks";
 import UserSettings from "../components/UserSettings";
@@ -26,10 +25,6 @@ const Router = () => {
         {
           path: "employees",
           element: <Employees />,
-        },
-        {
-          path: "newEmployee",
-          element: <EmployeeNewForm />,
         },
         {
           path: "products",
