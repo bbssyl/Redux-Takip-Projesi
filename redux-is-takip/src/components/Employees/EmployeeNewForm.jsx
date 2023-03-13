@@ -180,6 +180,26 @@ const EmployeeNewForm = () => {
                         </div>
                       </div>
                     </div>
+                    <div className="w-full">
+                      <div className="mb-3">
+                        <div className="px-2">
+                          <label htmlFor="employeePhoto">
+                            Personel Foto Url
+                          </label>
+                          <Field
+                            id="employeePhoto"
+                            name="employeePhoto"
+                            className="w-full outline-blue-200 p-2 rounded-lg border"
+                            placeholder="Personel Foto Url"
+                          />
+                          <ErrorMessage
+                            component="small"
+                            name="employeePhoto"
+                            className="text-red-700"
+                          />
+                        </div>
+                      </div>
+                    </div>
 
                     <div className="flex mx-auto gap-2 justify-center">
                       <button

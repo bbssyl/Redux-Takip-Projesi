@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { AiFillWarning } from "react-icons/ai";
+import blankProfile from "../../images/blankProfile.jpg";
 
 const EmployeesTopList = () => {
   const employees = useSelector((state) => state.employee.employees);
@@ -20,7 +21,26 @@ const EmployeesTopList = () => {
             {employees?.map((employee) => (
               <div className="table-row" key={employee.id}>
                 <div className="table-cell">
-                  {employee.employeeFirstName} {employee.employeeLastName}
+                  <div className="flex items-center gap-2 p-1">
+                    {employee.employeePhoto ? (
+                      <img
+                        src={employee?.employeePhoto}
+                        alt={employee?.employeePhoto}
+                        width={30}
+                        height={30}
+                        className="rounded-full"
+                      />
+                    ) : (
+                      <img
+                        src={blankProfile}
+                        alt={blankProfile}
+                        width={30}
+                        height={30}
+                        className="rounded-full"
+                      />
+                    )}
+                    {employee.employeeFirstName} {employee.employeeLastName}
+                  </div>
                 </div>
                 <div className="table-cell text-center">0</div>
                 <div className="table-cell text-center">

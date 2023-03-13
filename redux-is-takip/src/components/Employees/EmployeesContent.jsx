@@ -6,6 +6,7 @@ import {
   AiFillPhone,
   AiFillStar,
 } from "react-icons/ai";
+import blankProfile from "../../images/blankProfile.jpg";
 
 const EmployeesContent = ({ employees, handleOpenModal, handleDelete }) => {
   const taskEmployee = employees.filter((employee) => employee);
@@ -33,13 +34,23 @@ const EmployeesContent = ({ employees, handleOpenModal, handleDelete }) => {
             </div>
             <div className="flex gap-2 items-center mb-3">
               <div className="border rounded-full p-2">
-                <img
-                  src=""
-                  alt=""
-                  width={30}
-                  height={30}
-                  className="rounded-full"
-                />
+                {employee.employeePhoto ? (
+                  <img
+                    src={employee?.employeePhoto}
+                    alt={employee?.employeePhoto}
+                    width={30}
+                    height={30}
+                    className="rounded-full"
+                  />
+                ) : (
+                  <img
+                    src={blankProfile}
+                    alt={blankProfile}
+                    width={30}
+                    height={30}
+                    className="rounded-full"
+                  />
+                )}
               </div>
               <div>
                 <div className="text-blue-500 flex flex-col">

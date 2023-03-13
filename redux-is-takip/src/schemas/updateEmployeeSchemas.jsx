@@ -15,4 +15,5 @@ export const updateEmployeeSchemas = Yup.object({
     .required("*Bu alanın doldurulması zorunludur"),
   employeeAddress: Yup.string().required("*Bu alanın doldurulması zorunludur"),
   employeeStatus: Yup.string().required("*Bu alanın doldurulması zorunludur"),
+  employeePhoto: Yup.string(),
 });

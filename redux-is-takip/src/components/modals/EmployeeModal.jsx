@@ -46,22 +46,9 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <Formik
-                      initialValues={
-                        data || {
-                          employeeFirstName: "",
-                          employeeLastName: "",
-                          employeeAge: "",
-                          employeePhone: "",
-                          employeeEmail: "",
-                          employeeAddress: "",
-                          employeeStatus: "...",
-                          employeeRating: 0,
-                        }
-                      }
+                      initialValues={data}
                       onSubmit={async (values, { setSubmitting }) => {
-                        data
-                          ? await updateEmployeeFromFirebase(values)
-                          : await addEmployeeToFirebase(values);
+                        await updateEmployeeFromFirebase(values);
                         setOpen(false);
                         setSubmitting(false);
                       }}
@@ -261,6 +248,31 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                                 name="employeeStatus"
                               />
                             </div>
+                            <div className="mb-3">
+                              <div className="px-2">
+                                <label htmlFor="employeePhoto">
+                                  Personel Foto Url
+                                </label>
+                                <Field
+                                  id="employeePhoto"
+                                  name="employeePhoto"
+                                  className="w-full outline-blue-200 p-2 rounded-lg border"
+                                  placeholder="Personel Foto Url"
+                                  values={values.employeePhoto}
+                                  onChange={(event) =>
+                                    setFieldValue(
+                                      "employeePhoto",
+                                      event.target.value
+                                    )
+                                  }
+                                />
+                                <ErrorMessage
+                                  component="small"
+                                  name="employeePhoto"
+                                  className="text-red-700"
+                                />
+                              </div>
+                            </div>
                             <div className="mb-3 flex justify-center gap-2">
                               <button
                                 className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
@@ -269,15 +281,6 @@ const EmployeeModal = ({ data, handleCloseModal, open, setOpen }) => {
                                 disabled={isSubmitting}
                               >
                                 Güncelle
-                              </button>
-                              <button
-                                className="inline-flex justify-center rounded-md border border-transparent bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2"
-                                color="secondary"
-                                onClick={() => {
-                                  handleCloseModal();
-                                }}
-                              >
-                                Vazgeç
                               </button>
                             </div>
                           </Form>
