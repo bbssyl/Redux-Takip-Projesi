@@ -8,7 +8,7 @@ const RegisterView = () => {
   return (
     <div className="flex items-center justify-center">
       <div className="flex items-center justify-center shadow-lg shadow-gray-200 rounded-lg xl:w-1/2 lg:w-1/2 md:w-full">
-        <div className="w-screen flex xl:flex-row sm:flex-col p-4">
+        <div className="w-screen flex xl:flex-row sm:flex-col xs:flex-col p-4">
           <div className="w-full">
             <img
               src={loginImage}
